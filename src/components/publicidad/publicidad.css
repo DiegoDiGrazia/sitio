@@ -1,0 +1,13 @@
+.publicidadHorizontalContainer {
+    display: flex;
+    justify-content: center;  
+    align-items: center;  
+    width: 100%; 
+    background-color: #D9D9D9;
+
+}
+
+.publicidadHorizontalContainer img {
+    width: 1070px; 
+    height: 300px;
+}

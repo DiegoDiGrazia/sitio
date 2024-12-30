@@ -1,0 +1,77 @@
+/* Buscador */
+
+.buscador {
+    border: 1px solid #d4dae4; /* Borde sólido */
+    border-radius: 10px; /* Esquinas redondeadas */
+    width: 342px;
+    height: 40px; /* Altura del elemento */
+    background-image: url('/images/lupaBuscador.png'); /* Asegúrate de incluir la extensión */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: 7px center; /* Centra la imagen en el fondo */
+    padding-bottom: 5px;
+    padding-left: 10px;
+
+}
+
+.buscador::placeholder {
+    font-size: 14px; 
+}
+.buscador:not(:placeholder-shown) {
+    background-image: none; /* Elimina la imagen de fondo cuando hay texto o cuando el campo está enfocado */
+}
+
+.buscador:focus{
+    scale: 1.05;
+    border: 1px solid #667085c5; /* Nuevo color del borde cuando el campo tiene focus */
+    outline: 1px solid #667085c5;
+}
+
+.navbar{
+    height: 84px;
+    background-color: white !important;
+    border-bottom: 1px solid #d4dae4;
+    padding: 0px 20px !important;
+}
+.nombreUbicacion{
+    font-size: 23.1px;
+    font-weight: bold;
+    margin-bottom: 0px;
+    color: black;
+}
+.btn {
+    width: 164px;
+    height: 38px;
+    background-color: #FF653B !important;
+    background-image: url('/images/map-pin.png'); /* Asegúrate de incluir la extensión */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: 7px center; /* Centra la imagen en el fondo */
+    border: none !important;
+    margin-left: 20px;
+    color: white !important;
+    padding-bottom: 10px !important;
+    padding-left: 28px !important;
+    transition: transform 0.2s ease; /* Añadido para una transición suave */
+}
+
+.btn:focus {
+    scale: 1.0 !important;
+}
+
+.btn:hover {
+    background-color: #f3592e !important;
+    scale: 1.05 !important;
+}
+
+.btn:active {
+    transform: scale(0.95); /* Reduce el tamaño cuando se hace clic */
+}
+
+.navbarCategorias .nav-link{
+    font-weight: bold !important;
+    color: #667183;
+    font-size: 16px;
+    margin: 0px 10px;
+}
+.navbarCategorias{
+    height: 60px;
+}

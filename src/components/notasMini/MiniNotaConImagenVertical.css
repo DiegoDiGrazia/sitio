@@ -1,0 +1,30 @@
+.imagenYNota{
+    width: 340px;
+    height: 186px;
+}
+
+.col-10 .lugarDeLaNota{
+    font-size: 14px;
+    color: #101828;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.inicialesConColores {
+    background-color: pink; /* Fondo rosa */
+    color: rgb(119, 48, 89); /* Color del texto, ajusta según tu preferencia */
+    width: 50px; /* Ancho del fondo */
+    height: 50px; /* Altura del fondo */
+    display: flex; /* Usamos flex para centrar el contenido */
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    border-radius: 50%; /* Hace el fondo redondo */
+    font-weight: bold; /* Hace el texto más resaltado */
+    font-size: 16px; /* Tamaño de la fuente */
+    text-align: center;
+  }
+
+.filaDatosNota{
+    border-bottom: 1px solid rgb(206, 205, 205);
+    margin-bottom: 20px;
+}
