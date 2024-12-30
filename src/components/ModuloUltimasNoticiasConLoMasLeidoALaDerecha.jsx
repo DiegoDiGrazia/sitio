@@ -21,12 +21,12 @@ function ModuloUltimasNoticiasConLoMasLeidoALaDerecha() {
                 </div>     
             </div>
             <div className='row' style={{borderBottom: "1px solid #bababa"}}>
-                <NotaMiniGenerica width={"338px"} height={"361px"} tieneContenido={true}/>
-                <NotaMiniGenerica width={"338px"} height={"361px"} tieneContenido={true}/>
-                <NotaMiniGenerica width={"338px"} height={"361px"} tieneContenido={true}/>
+                <NotaMiniGenerica width={"338px"} height={"361px"} tieneContenido={true} fontSizeContenido={"18px"} fontSizeTitulo={"24px"}/>
+                <NotaMiniGenerica width={"338px"} height={"361px"} tieneContenido={true} fontSizeContenido={"18px"} fontSizeTitulo={"24px"}/>
+                <NotaMiniGenerica width={"338px"} height={"361px"} tieneContenido={true} fontSizeContenido={"18px"} fontSizeTitulo={"24px"}/>
             </div>
             <div className='row' style={{borderBottom: "1px solid #bababa", marginTop:"40px", paddingBottom:"30px"}}>
-                <NotaMiniGenerica width={"720px"} height={"316px"} tieneContenido={true}/>
+                <NotaMiniGenerica width={"720px"} height={"316px"} tieneContenido={true} fontSizeContenido={"18px"} fontSizeTitulo={"30px"}/>
                 <BannerNegroVerticalMasLeidas/>
             </div>
 

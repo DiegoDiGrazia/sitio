@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./MiniNotaConImagenVertical.css"
 import Categoria from "../common/Categoria";
 
-function NotaMiniGenerica({width,height, tieneContenido,border, marginTop}) {
+function NotaMiniGenerica({width,height, tieneContenido,border, marginTop, fontSizeContenido, fontSizeTitulo}) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const nota = {
@@ -22,9 +22,9 @@ function NotaMiniGenerica({width,height, tieneContenido,border, marginTop}) {
                 <img src={nota.src} style={{height, width, objectFit: "cover", borderRadius: "20px", padding: "0px"}}/>
                 <div className="col-auto p-0 mt-3 "> 
                     <Categoria categoria={"alguna"}/>
-                    <p style={{fontSize: "16px", fontWeight: "bold", marginTop: "10px", color: "black", marginBottom: "5px"}}>{nota.titulo}</p>
+                    <p style={{fontSize: fontSizeTitulo, fontWeight: "bold", marginTop: "10px", color: "black", marginBottom: "5px"}}>{nota.titulo}</p>
                     {tieneContenido &&
-                    <p style={{fontSize: "16px", marginTop: "0px", color: "#101828", opacity: "75%"}}>{nota.contenido}</p>
+                    <p style={{fontSize: fontSizeContenido, marginTop: "0px", color: "#101828", opacity: "75%"}}>{nota.contenido}</p>
                     }
 
                 </div>

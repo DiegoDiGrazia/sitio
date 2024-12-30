@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import Clima from '../Clima';
+
 import "./publicidad.css"
 
 function PublicidadHorizontal() {
