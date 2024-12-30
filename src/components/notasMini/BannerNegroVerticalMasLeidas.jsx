@@ -22,7 +22,7 @@ function BannerNegroVerticalMasLeidas({border}) {
                 LAS MAS LEIDAS EN <span style={{color: "#DD2590"}}>CORDOBA</span></p>
             <div className="row">
                 <div className="col-auto">1</div>
-                <div className="col"> en semana santa secuentraron 75kg de pejeerrey y 40 monos</div>
+                <div className="col"> en semana santa secuentraron 75kg de pejeerrey y 40 monos asdf</div>
             </div>
 
 
