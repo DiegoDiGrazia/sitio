@@ -1,42 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./MiniNotaConImagenVertical.css"
 import Categoria from "../common/Categoria";
+import { useSelector } from 'react-redux';
+import { formatearFecha } from "../common/formats";
 
-function MiniNotaConImagenVertical({border}) {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-
-  const nota = {
-    id: 1,
-    src: "./images/imagenMiniVertical.png",
-    alt: "Slide 1",
-    categoria: "economia",
-    titulo: "Starlink: los precios del servicio satelital de internet de elon Musk",
-    contenido: " Llariora otrogo aportes a vecinos afectados por el temporal y entrego viviendas semillas a 18 familias"
-};
-
-
+function MiniNotaConImagenVertical({border, nota}) {
+    if(!nota){
+        return(
+            <div>cargando</div>
+        )
+    }
+const iso_3 = useSelector((state) => state.datosHome.datoPais.iso_3);
   return (
-    <>
+    <> 
             <div className="row imagenYNota p-0">
                 {/* columna imagen */}
                 <div className="col-4 p-0"> 
-                    <img src={nota.src}/>
+                    <img src={nota.imagen} className="notaMiniVertical"/>
 
                 </div>
                 {/* columna categoria y nota */}
-                <div className="col-8"> 
-                        <Categoria categoria={"Sociedad"}/>
-                        <p style={{fontSize: "16px", fontWeight: "bold", marginTop: "10px", color: "#101828"}}>{nota.contenido}</p>
+                <div className="col-8" style={{width: "220px"}}> 
+                        <Categoria categoria={nota.categorias}/>
+                        <p style={{fontSize: "18px", fontWeight: "bold", marginTop: "10px", color: "#101828"}}>{nota.titulo}</p>
                 </div>
             </div>
             <div className="row mt-3 filaDatosNota" style={{ border: border ? undefined : "none" }}>
                 <div className="col-2 p-0">
-                    <p className="inicialesConColores">CBA</p>
+                    <p className="inicialesConColores">{iso_3}</p>
                 </div>
-                <div className="col-10" >
-                    <p className="lugarDeLaNota">Gobierno de la provincia de Cordoba</p>
-                    <p>12 Marzo 2024</p>
+                <div className="col-10 p-0" >
+                    <p className="lugarDeLaNota">{nota.cliente}</p>
+                    <p className = "p-0 m-0"  style={{color: "#BABABA" , marginLeft: "10px"}}>{formatearFecha(nota.f_pub)}</p>
 
                 </div>
 

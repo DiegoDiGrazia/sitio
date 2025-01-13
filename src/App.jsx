@@ -1,17 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Sitio from './components/Sitio'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Sitio from './components/Sitio';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <Sitio/>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/sitio/:pais?/:provincia?/:municipio?" element={<Sitio />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

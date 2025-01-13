@@ -18,8 +18,7 @@ function Categoria({ categoria }) {
   
     return (
       <div style={estiloContenedor}>
-        <p style={estiloCategoria}>{categoria}</p>
-        <p style={estiloCategoria}>{categoria}</p>
+        <p style={estiloCategoria}>{categoria.split("/").pop()}</p>
       </div>
     );
   }

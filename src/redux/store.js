@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer  from "./primerSlice"
+import datosHome from './datosHome'; // Importar el reducer correctamente
 
+// Configurar la tienda
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
-    },
-  
+    datosHome, // Usar el reducer que definiste
+  },
 });
 
 export default store;

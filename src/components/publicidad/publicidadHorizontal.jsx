@@ -7,7 +7,7 @@ function PublicidadHorizontal() {
   return (
     <>
         <div className='publicidadHorizontalContainer'>
-            <img src='./images/publicidadHorizontal.png'/>
+            <img src='../images/publicidadHorizontal.png'/>
         </div>
     </>
   );

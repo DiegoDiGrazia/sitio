@@ -9,7 +9,7 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            <img src='images/logoNoticiasd.png' alt=''/>
+            <img src='../images/logoNoticiasd.png' alt=''/>
           </a>
           <p className='nombreUbicacion'>Argentina</p>
           <button

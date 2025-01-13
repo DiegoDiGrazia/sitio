@@ -3,6 +3,13 @@
     height: 186px;
 }
 
+.notaMiniVertical{
+    width: 112px;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
 .col-10 .lugarDeLaNota{
     font-size: 14px;
     color: #101828;

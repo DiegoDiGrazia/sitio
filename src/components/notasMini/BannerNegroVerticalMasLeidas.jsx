@@ -18,7 +18,7 @@ function BannerNegroVerticalMasLeidas({border}) {
             <p style={{color: "white", fontSize: "28px", fontFamily: 'Big Shoulders Text, sans-serif', fontWeight: "bold"}}>
                 LAS MAS LEIDAS EN <span style={{color: "#DD2590"}}>CORDOBA</span></p>
             {notas.map((nota, index) => (
-            <div className="row" style={{color: "white", fontWeight: "bold", fontSize: "20px", padding: "0px", borderBottom: index === 3 ? "none" : "1px solid #DD2590", margin: "20px 0px", paddingBottom: "30px"}}>
+            <div className="row"  style={{color: "white", fontWeight: "bold", fontSize: "20px", padding: "0px", borderBottom: index === 3 ? "none" : "1px solid #DD2590", margin: "20px 0px", paddingBottom: "30px"}}>
                   <div className="col-auto" style={{padding: "10px 10px 0px 0px", fontSize: "43px", fontFamily: 'Big Shoulders Text, sans-serif', color: "#DD2590"}}>
                   {index + 1}
                   </div>

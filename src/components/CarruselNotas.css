@@ -2,6 +2,7 @@
     width: 708px !important; 
     height: 479px;
     object-fit: cover;
+    border-radius: 15px;
   }
 
 .carruselContainer{

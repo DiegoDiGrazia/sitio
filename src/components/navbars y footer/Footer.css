@@ -1,0 +1,64 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #131313; /* Fondo oscuro */
+    color: white;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    padding-bottom: 1rem;
+    align-items: center;
+    padding: 15px 30px;
+    z-index: 1000;
+    
+  }
+  
+  .footer.visible {
+    transform: translateY(0);
+    height: 60px;
+  }
+  
+  .footer.expanded {
+    padding-bottom: 3rem; /* Aumentar el espacio cuando está expandido */
+    height: 360px;
+  }
+  
+  .expanded-content {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    color: white;
+  }
+  .botonVerMasFooter{   
+    color: white;
+    background:none;
+    border:none;
+    cursor: pointer;
+    font-size: 16px;    
+    font-weight: 500;
+    float:inline-end;
+    align-items: center;
+  }
+
+  .expanded-content button:hover{
+    background: none;
+  }
+  .expanded-content button{
+    width: 30px !important;
+    height: 30px !important;
+    padding: 0px;
+    margin-left: 10px;
+  }
+
+.expanded-content li{
+  margin-bottom: 20px;
+}
+.expanded-content h4{
+  margin-bottom: 20px;
+}
+.expanded-content .derechos{
+  font-size: 13px;
+  color: #A7A7A7;
+  margin-top: 40px;
+}

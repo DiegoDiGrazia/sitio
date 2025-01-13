@@ -6,7 +6,9 @@ import NotaConVideo from './notasMini/notaConVideo';
 import NotaConVideoGrande from './notasMini/NotaConVideoGrande';
 import NotaMiniGenerica from './notasMini/notaMiniGenerica';
 import DestacadaDeLaSemanaMini from './notasMini/DestacadaDeLaSemanaMini';
-function ModuloUltimasNoticiasConDestacadaDeLaSemana() {
+import BannerNegroVerticalMasLeidas from './notasMini/BannerNegroVerticalMasLeidas';
+import ModuloTendencias from './ModuloTendencias';
+function ModuloUltimasNoticiasConTendenciasAbajo() {
   return (
     <>
         <div className='row moduloPortada mt-4' style={{backgroundColor: "#ffffff", width: "1205px" }}>
@@ -19,24 +21,26 @@ function ModuloUltimasNoticiasConDestacadaDeLaSemana() {
                     <BotonVerMas/>       
                 </div>     
             </div>
-            <div className='row' style={{borderBottom: "1px solid #bababa"}}>
-                <NotaMiniGenerica width={"338px"} height={"361px"} tieneContenido={true}/>
-                <NotaMiniGenerica width={"338px"} height={"361px"} tieneContenido={true}/>
-                <NotaMiniGenerica width={"338px"} height={"361px"} tieneContenido={true}/>
-            </div>
             <div className='row' style={{borderBottom: "1px solid #bababa", marginTop:"40px", paddingBottom:"30px"}}>
-                <DestacadaDeLaSemanaMini width={"338px"} height={"361px"}/>
-                <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false}/>
+                <div className='col-auto'>
+                <NotaMiniGenerica width={"720px"} height={"316px"} tieneContenido={true} fontSizeContenido={"18px"} fontSizeTitulo={"30px"}/>
+                <ModuloTendencias/>
+                </div>
+                <div className='col-auto' style={{marginLeft: "30px"}}>
+                    <MiniNotaConImagenVertical border={true}/>
+                    <MiniNotaConImagenVertical border={true}/>
+                    <MiniNotaConImagenVertical border={true}/>
+                    <MiniNotaConImagenVertical border={true}/>
+                    <MiniNotaConImagenVertical border={true}/>
+                    <MiniNotaConImagenVertical/>
+
+                </div>
             </div>
-            <div className='row' style={{borderBottom: "1px solid #bababa", marginTop:"40px"}}>
-                <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false}/>
-                <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false}/>
-                <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false}/>
-            </div>
+
         </div>
     
     </>
   );
 }
 
-export default ModuloUltimasNoticiasConDestacadaDeLaSemana;
+export default ModuloUltimasNoticiasConTendenciasAbajo;
