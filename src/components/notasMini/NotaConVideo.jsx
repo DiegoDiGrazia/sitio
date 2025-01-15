@@ -1,28 +1,25 @@
 import React, { useState } from "react";
 import "./MiniNotaConImagenVertical.css"
 import Categoria from "../common/Categoria";
+import { formatearFecha } from "../common/formats";
 
-function NotaConVideo({border}) {
-  const [activeIndex, setActiveIndex] = useState(0);
+function NotaConVideo({nota}) {
+  if(!nota){
+    return(
+        <div>cargando</div>
+    )
+}
 
-
-  const nota = {
-    id: 1,
-    src: "./images/imagenMiniVertical.png",
-    alt: "Slide 1",
-    categoria: "economia",
-    titulo: "Starlink: los precios del servicio satelital de internet de elon Musk",
-    contenido: " Llariora otrogo aportes a vecinos afectados por el temporal y entrego viviendas semillas a 18 familias"
-};
+  const border = false;
 
 
   return (
     <>      
     <div style={{width: "338px", marginLeft: "50px", padding: "0px"} }>
 
-                    <img src={nota.src} style={{height: "180px", width: "338px", objectFit: "cover", borderRadius: "20px", padding: "0px"}}/>
+                    <img src={nota.imagen} style={{height: "180px", width: "338px", objectFit: "cover", borderRadius: "20px", padding: "0px"}}/>
                 <div className="col-auto p-0"> 
-                        <p style={{fontSize: "16px", fontWeight: "bold", marginTop: "10px", color: "#ffffff"}}>{nota.contenido}</p>
+                        <p style={{fontSize: "16px", fontWeight: "bold", marginTop: "10px", color: "#ffffff"}}>{nota.titulo}</p>
                 </div>
 
             <div className="row mt-3 filaDatosNota" style={{ border: border ? undefined : "none" }}>
@@ -30,8 +27,8 @@ function NotaConVideo({border}) {
                     <p className="inicialesConColores">CBA</p>
                 </div>
                 <div className="col-10 p-0" >
-                    <p style={{color: "#ffffff", fontWeight: "bold", marginBottom: "0px", marginLeft: "10px"}}>Provincia mendoza</p>
-                    <p style={{color: "#BABABA" , marginLeft: "10px"}}>12 Marzo 2024</p>
+                    <p style={{color: "#ffffff", fontWeight: "bold", marginBottom: "0px", marginLeft: "10px"}}>{nota.cliente}</p>
+                    <p style={{color: "#BABABA" , marginLeft: "10px"}}>{formatearFecha(nota.f_pub)}</p>
 
                 </div>
 

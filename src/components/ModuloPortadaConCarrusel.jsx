@@ -10,29 +10,30 @@ import { obtenerNotaDelTipo } from './common/Api.jsx';
 
 
 
-function ModuloPortadaConCarrusel({notasCarrusel, notasDerechaCarrusel, notasDebajoCarrusel}) {
+function ModuloPortadaConCarrusel({notasPais, notasDebajoCarrusel}) {
+  
 
   return (
     <>
         <div className='row moduloPortada mt-4'>
             <div className='col-auto'>
-              <CarruselNotas notas={notasCarrusel.slice(0, 5)}  />
+              <CarruselNotas notas={notasPais.slice(0, 2)}  />
             </div>
             <div className='col-auto' style={{marginLeft: "40px"}}>
-              <MiniNotaConImagenVertical border={true} nota={obtenerNotaDelTipo("pais")}/>
-              <MiniNotaConImagenVertical border={true } nota={obtenerNotaDelTipo("pais")}/>
-              <MiniNotaConImagenVertical nota={obtenerNotaDelTipo("pais")}/>
+              <MiniNotaConImagenVertical border={true} nota={notasPais[2]}/>
+              <MiniNotaConImagenVertical border={true } nota={notasPais[3]}/>
+              <MiniNotaConImagenVertical nota={notasPais[4]}/>
             </div>
         </div>
         <div className='row' style={{borderBottom: "1px solid #bababa", marginTop:"40px"}}>
-            <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota ={notasDebajoCarrusel[1]}/>
-            <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota ={notasDebajoCarrusel[2]}/>
-            <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota ={notasDebajoCarrusel[3]}/>
-        </div>
-        <div className='row' style={{borderBottom: "1px solid #bababa", marginTop:"40px"}}>
-            <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota ={notasDebajoCarrusel[4]}/>
             <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota ={notasDebajoCarrusel[5]}/>
             <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota ={notasDebajoCarrusel[6]}/>
+            <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota ={notasDebajoCarrusel[7]}/>
+        </div>
+        <div className='row' style={{borderBottom: "1px solid #bababa", marginTop:"40px"}}>
+            <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota ={notasDebajoCarrusel[8]}/>
+            <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota ={notasDebajoCarrusel[9]}/>
+            <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota ={notasDebajoCarrusel[10]}/>
         </div>
     </>
   );

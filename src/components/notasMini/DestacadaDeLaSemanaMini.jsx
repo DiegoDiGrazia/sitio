@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import "./MiniNotaConImagenVertical.css"
 import Categoria from "../common/Categoria";
+import { formatearFecha } from "../common/formats";
 
-function DestacadaDeLaSemanaMini({border}) {
+function DestacadaDeLaSemanaMini({nota}) {
+    if(!nota){
+        return(
+            <div>cargando</div>
+        );}
 
-  const nota = {
-    id: 1,
-    src: "./images/imagenMiniVertical.png",
-    alt: "Slide 1",
-    categoria: "economia",
-    titulo: "Starlink: los precios del servicio satelital de internet de elon Musk",
-    contenido: " Llariora otrogo aportes a vecinos afectados por el temporal y entrego viviendas semillas a 18 familias"
-};
+
 
   return (
     <>      
@@ -19,7 +17,7 @@ function DestacadaDeLaSemanaMini({border}) {
             <div className="row p-0">
                 {/* columna imagen */}
                 <div className="col-6 p-0"> 
-                    <img src={nota.src} style={{width: "322px", height: "326px", margin: "20px", border: "15px"}}/>
+                    <img src={nota.imagen} style={{width: "322px", height: "326px", margin: "20px", border: "15px", objectFit: "cover", borderRadius: "10px"}}/>
 
                 </div>
                 {/* columna categoria y nota */}
@@ -31,9 +29,9 @@ function DestacadaDeLaSemanaMini({border}) {
                         <div className="col-2 p-0">
                             <p className="inicialesConColores" style={{marginLeft: "10px"}}>CBA</p>
                         </div>
-                        <div className="col-10" >
-                            <p className="lugarDeLaNota" style={{color: "white"}}>autor</p>
-                            <p style={{color: "white"}}>12 Marzo 2024</p>
+                        <div className="col-10 mt-auto" >
+                            <p className="lugarDeLaNota" style={{color: "white"}}>{nota.cliente}</p>
+                            <p style={{color: "white"}}>{formatearFecha(nota.f_pub)}</p>
 
                         </div>
                     </div>

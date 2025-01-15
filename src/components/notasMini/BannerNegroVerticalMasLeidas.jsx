@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import "./MiniNotaConImagenVertical.css"
 import Categoria from "../common/Categoria";
 
-function BannerNegroVerticalMasLeidas({border}) {
+function BannerNegroVerticalMasLeidas({notas}) {
+  if(!notas){
+    return(
+        <div>cargando</div>
+    )
+  }
 
-    const notas= [
-        { id: 1, src: "./images/notaPortadaImagen.png", alt: "Slide 1", categoria: "economia", titulo: "Starlink: los precios del servicio satelital de internet de elon Musk", 
-          contenido: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla varius lorem in tortor interdum, non efficitur justo malesuada. Suspendisse potenti. Mauris ultrices, sapien eu volutpat elementum, nunc lectus malesuada risus, at viverra turpis eros vel turpis. Nullam sodales sapien eu est. " },
-        { id: 2, src: "./images/notaPortadaImagen.png", alt: "Slide 2", categoria: "Agricultura", titulo: "Starlink: los precios del servicio satelital de internet de elon Musk", contenido: "contenido de la nota 2 " },
-        { id: 3, src: "./images/notaPortadaImagen.png", alt: "Slide 3", categoria: "Agricultura", titulo: "Starlink: los precios del servicio satelital de internet de elon Musk", contenido: "contenido de la nota 3" },
-        { id: 4, src: "./images/notaPortadaImagen.png", alt: "Slide 4", categoria: "Agricultura", titulo: "Starlink: los precios del servicio satelital de internet de elon Musk", contenido: "contenido de la nota 4" },
-    ]
+
 
   return (
     <>      

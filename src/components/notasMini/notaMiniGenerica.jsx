@@ -5,8 +5,6 @@ import { useSelector } from "react-redux";
 import { formatearFecha } from "../common/formats";
 
 function NotaMiniGenerica({width,height, tieneContenido,border, marginTop, fontSizeContenido, fontSizeTitulo, nota}) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const iso_3 = useSelector((state) => state.datosHome.datoPais.iso_3);
   if(!nota){
     return(
         <div>cargando</div>

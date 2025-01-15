@@ -19,23 +19,24 @@ export const obtenerNotas = (pais, provincia) => {
 
 
 
-export const fetchNotas = (formData, action, dispatch) => {
-  axios.post("https://panel.serviciosd.com/app_obtener_notas_portada", formData, { 
+export const fetchNotas = async (formData, action, dispatch) => {
+  try {
+    const response = await axios.post("https://panel.serviciosd.com/app_obtener_notas_portada", formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
-  })
-  .then((response) => {
-      if (response) {
-        console.log(response, "FETCH NOTAS")
-          dispatch(action(response.data.item.notas));
-      } else {
-          console.error('Error en login:', response.data.message);
+    });
+    if (response) {
+      console.log(response, "FETCH NOTAS");
+      if(action){
+      dispatch(action(response.data.item.notas));
       }
-  })
-  .catch((error) => {
-      console.error('Error en login:', error);
-  });
+      return response;
+    } else {
+      console.error('Error en login:', response.data.message);
+    }
+  } catch (error) {
+    console.error('Error en login:', error);
+  }
 };
-
 export const obtenerNotaDelTipo = (tipoNotas) => {
   const notas = useSelector((state) => state.datosHome.notasHome[tipoNotas]);
   const notasMostradas = useSelector((state) => state.datosHome.notasMostradas);

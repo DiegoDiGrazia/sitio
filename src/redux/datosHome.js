@@ -36,10 +36,26 @@ const datosHome = createSlice({
     setNotasMostradas: (state, action) => {
       state.notasMostradas = [...state.notasMostradas, action.payload]; 
     },
-}
+
+    eliminarRepetidos: (state) => {
+      let idRecorridos = new Set();
+
+      // Recorrer todas las propiedades de notasHome
+      for (let clave in state.notasHome) {
+        state.notasHome[clave] = state.notasHome[clave].filter(nota => {
+          if (idRecorridos.has(nota.id_noti)) {
+            return false;
+          } else {
+            idRecorridos.add(nota.id_noti);
+            return true;
+          }
+        });
+      }
+    },
+  },
 });
 
 // Exportar las acciones y el reducer
 export const { setDatoPais, setDatoProvincia,  setDatoGeo, 
-  setNotasMunicipio, setNotasPais, setNotasProvincia, setNotasSuProvincia, setNotasMostradas } = datosHome.actions;
+  setNotasMunicipio, setNotasPais, setNotasProvincia, setNotasSuProvincia, setNotasMostradas, eliminarRepetidos } = datosHome.actions;
 export default datosHome.reducer;
