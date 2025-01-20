@@ -28,7 +28,7 @@ function ModuloUltimasNoticiasConDestacadaDeLaSemana( {notasSuProvincia}) {
                 <DestacadaDeLaSemanaMini width={"338px"} height={"361px"} nota = {notasSuProvincia[7]}/>
                 <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false}nota = {notasSuProvincia[3]}/>
             </div>
-            <div className='row' style={{borderBottom: "1px solid #bababa", marginTop:"40px"}}>
+            <div className='row' style={{ marginTop:"40px"}}>
                 <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota = {notasSuProvincia[4]}/>
                 <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota = {notasSuProvincia[5]}/>
                 <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota = {notasSuProvincia[6]}/>

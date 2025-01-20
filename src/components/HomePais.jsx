@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Navbar from './navbars y footer/Navbar';
-import NavbarCategorias from './navbars y footer/NavbarCategorias';
+import Navbar from './header/Navbar.jsx';
+import NavbarCategorias from './header/NavbarCategorias.jsx';
 import PublicidadHorizontal from './publicidad/PublicidadHorizontal';
 import ModuloPortadaConCarrusel from './ModuloPortadaConCarrusel';
 import ModuloLoMasVisto from './ModuloLoMasVisto';
@@ -16,13 +16,10 @@ import { useDispatch } from 'react-redux';
 import { setNotasMunicipio, setNotasPais, setNotasProvincia, setNotasSuProvincia } from '../redux/datosHome';
 import { fetchNotas } from './common/Api.jsx';
 import { eliminarRepetidos } from '../redux/datosHome';
+import Header from './header/Header.jsx';
+import ContainerUbicacion from './header/elegirUbicacion/ContainerUbicacion.jsx';
 
 function HomePais({ pais }) {
-
-
-
-
-  
     const datosDeArgentina = useSelector((state) => state.datosHome);
     const dispatch = useDispatch();
     const notasPais = useSelector((state) => state.datosHome.notasHome.pais);
@@ -96,12 +93,8 @@ function HomePais({ pais }) {
   return (
     <>
     <PublicidadHorizontal/>
-        <div className='row row m-0 justify-content-center'>
-            <div className="col-10 p-0" style={{width: "1560px"}}>
-                <Navbar/>
-                <NavbarCategorias/>
-            </div>
-        </div>
+    <Header/>
+
     <div
         className="row m-0 justify-content-center"
         style={{

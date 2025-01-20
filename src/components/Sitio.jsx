@@ -1,6 +1,6 @@
 import { useReducer, useState } from 'react';
-import Navbar from './navbars y footer/Navbar';
-import NavbarCategorias from './navbars y footer/NavbarCategorias';
+import Navbar from './header/Navbar';
+import NavbarCategorias from './header/NavbarCategorias';
 import PublicidadHorizontal from './publicidad/PublicidadHorizontal';
 import ModuloPortadaConCarrusel from './ModuloPortadaConCarrusel';
 import ModuloLoMasVisto from './ModuloLoMasVisto';
@@ -14,6 +14,7 @@ import HomePais from './HomePais';
 import { useParams } from 'react-router-dom';
 import { setDatoGeo, setDatoPais } from '../redux/datosHome';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function Sitio() {
   const [TOKEN, setTOKEN] = useState("");
@@ -21,6 +22,8 @@ function Sitio() {
   const { pais, provincia, municipio } = useParams();
   const [provinciasDeUnPais, setProvinciasDeUnPais] = useState([]);
   const dispatch = useDispatch();
+  const SeleccionarUbicacion = useSelector((state) => state.datosHome.mostrarUbicacion);
+
  
   useEffect(() => {
     if (!tokenLoaded) {
