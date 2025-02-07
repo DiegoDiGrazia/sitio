@@ -1,12 +1,8 @@
 import { useState } from 'react';
-import CarruselNotas from './CarruselNotas';
-import MiniNotaConImagenVertical from './notasMini/miniNotaConImagenVertical';
-import BotonVerMas from './common/BotonVerMas';
-import NotaConVideo from './notasMini/notaConVideo';
-import NotaConVideoGrande from './notasMini/NotaConVideoGrande';
-import NotaMiniGenerica from './notasMini/notaMiniGenerica';
-import DestacadaDeLaSemanaMini from './notasMini/DestacadaDeLaSemanaMini';
-import BannerNegroVerticalMasLeidas from './notasMini/BannerNegroVerticalMasLeidas';
+import BotonVerMas from '../common/BotonVerMas';
+import NotaMiniGenerica from '../notasMini/notaMiniGenerica';
+
+import BannerNegroVerticalMasLeidas from '../notasMini/BannerNegroVerticalMasLeidas';
 import { useDispatch } from 'react-redux';
 function ModuloUltimasNoticiasConLoMasLeidoALaDerecha({notas, notasScrollInfinito} ) {
 

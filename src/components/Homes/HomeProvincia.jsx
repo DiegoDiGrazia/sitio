@@ -1,31 +1,42 @@
 import { useState } from 'react';
-import Navbar from './header/Navbar.jsx';
-import NavbarCategorias from './header/NavbarCategorias.jsx';
-import PublicidadHorizontal from './publicidad/PublicidadHorizontal';
-import ModuloPortadaConCarrusel from './ModuloPortadaConCarrusel';
-import ModuloLoMasVisto from './ModuloLoMasVisto';
-import ModuloUltimasNoticiasConDestacadaDeLaSemana from './ModuloUltimasNoticiasConDestacadaDeLaSemana';
-import ModuloUltimasNoticiasConLoMasLeidoALaDerecha from './ModuloUltimasNoticiasConLoMasLeidoALaDerecha';
-import ModuloWebstories from './ModuloWebstories';
-import ModuloUltimasNoticiasConTendenciasAbajo from './ModuloUltimasNoticiasConTendenciasAbajo';
+import PublicidadHorizontal from '../publicidad/PublicidadHorizontal.jsx';
+import ModuloPortadaConCarrusel from '../modulos/ModuloPortadaConCarrusel.jsx';
+import ModuloLoMasVisto from '../modulos/ModuloLoMasVisto.jsx';
+import ModuloUltimasNoticiasConLoMasLeidoALaDerecha from '../modulos/ModuloUltimasNoticiasConLoMasLeidoALaDerecha.jsx';
+import ModuloUltimasNoticiasConDestacadaDeLaSemana from '../modulos/ModuloUltimasNoticiasConDestacadaDeLaSemana.jsx';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import Footer from './navbars y footer/Footer';
+import Footer from '../navbars y footer/Footer.jsx';
 import { useDispatch } from 'react-redux';
-import { setNotasMunicipio, setNotasPais, setNotasProvincia, setNotasSuProvincia } from '../redux/datosHome';
-import { fetchNotas } from './common/Api.jsx';
-import { eliminarRepetidos } from '../redux/datosHome';
-import Header from './header/Header.jsx';
-import ContainerUbicacion from './header/elegirUbicacion/ContainerUbicacion.jsx';
+import { setNotasMunicipio, setNotasPais, setNotasProvincia, setNotasSuProvincia } from '../../redux/datosHome.js';
+import { fetchNotas } from '../common/Api.jsx';
+import { eliminarRepetidos } from '../../redux/datosHome.js';
+import Header from '../header/Header.jsx';
+import ContainerUbicacion from '../header/elegirUbicacion/ContainerUbicacion.jsx';
 
-function HomePais({ pais }) {
-    const datosDeArgentina = useSelector((state) => state.datosHome);
+function HomeProvincia({ pais, provincia }) {
+    const [datoGeoProvincia, setDatoGeoProvincia ] = useState("");
+    
     const dispatch = useDispatch();
     const notasPais = useSelector((state) => state.datosHome.notasHome.pais);
-    const notasProvincia = useSelector((state) => state.datosHome.notasHome.provincia);
     const suProvincia = useSelector((state) => state.datosHome.notasHome.suProvincia);
+    const provinciaHome = useSelector((state) => state.datosHome.notasHome.provincia);
     const notasMunicipio = useSelector((state) => state.datosHome.notasHome.municipio);
+
+    const provinciaFormateada = provincia.replace(/-/g, " ");
+    console.log(provinciaFormateada);
+
+    const paises = useSelector((state) => state.datosHome.datoGeo.paises);
+    useEffect(() => {
+      if (paises) {
+        const provincias = paises.filter(paiss => paiss.nombre === pais)[0].provincias;
+        const ProvinciaActual = provincias.filter(prov => prov.nombre.toLowerCase() === provinciaFormateada.toLowerCase())[0];
+        setDatoGeoProvincia(ProvinciaActual)
+      }
+      console.log(datoGeoProvincia, "USE EFFECT GEO")
+    }, [paises, datoGeoProvincia]);
+
 
     const [notasScrollInfinito, setNotasScrollInfinito] = useState([]);
     const [page, setPage] = useState(0);
@@ -39,8 +50,7 @@ function HomePais({ pais }) {
   
         const formData2 = new FormData();
         formData2.append('token', 1);
-        formData2.append("pais", pais);
-        formData2.append("ALL", pais);
+        formData2.append("provincia", provinciaFormateada);
         const fetch2 = fetchNotas(formData2, setNotasProvincia, dispatch);
   
         const formData3 = new FormData();
@@ -78,11 +88,11 @@ function HomePais({ pais }) {
       const loadMoreNotas = async () => {
         const formData = new FormData();
         formData.append('token', 1);
-        formData.append("pais", pais);
+        formData.append("provincia", provinciaFormateada);
+        formData.append("region", datoGeoProvincia.region);
         formData.append("limite", "9");
         formData.append("desde_limite", page);
         const response = await fetchNotas(formData, "", dispatch);
-        console.log(response, "RESPONSE SCROLL INFINITO");
         setNotasScrollInfinito(prevNotas => [...prevNotas, ...response.data.item.notas]);
       };
   
@@ -102,11 +112,11 @@ function HomePais({ pais }) {
         }}
     >
   <div className="col-auto p-0">
-    <ModuloPortadaConCarrusel notasPais={notasPais} notasDebajoCarrusel={suProvincia}/>
-    <ModuloUltimasNoticiasConDestacadaDeLaSemana notasSuProvincia = {suProvincia} />
-    <ModuloLoMasVisto notas = {notasMunicipio}/>
+    <ModuloPortadaConCarrusel notasCarrusel={provinciaHome} notasDerechaCarrusel={notasPais}/>
+    <ModuloUltimasNoticiasConDestacadaDeLaSemana notasSuProvincia = {provinciaHome.slice(2)} /> {/* notas de la provincia */}
+    <ModuloLoMasVisto notas = {notasMunicipio}/>  {/* Aca van las notas de los municipios de la provincia */}
     <PublicidadHorizontal />
-    <ModuloUltimasNoticiasConLoMasLeidoALaDerecha notas = {notasPais} notasScrollInfinito = {notasScrollInfinito}/>
+    <ModuloUltimasNoticiasConLoMasLeidoALaDerecha notas = {provinciaHome.slice(10)} notasScrollInfinito = {notasScrollInfinito}/>
 
 
   </div>
@@ -128,4 +138,4 @@ function HomePais({ pais }) {
   );
 }
 
-export default HomePais;
+export default HomeProvincia;

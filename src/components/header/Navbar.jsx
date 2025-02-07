@@ -4,12 +4,15 @@ import ContainerUbicacion from './elegirUbicacion/ContainerUbicacion';
 import { setMostrarUbicacion } from '../../redux/datosHome';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 function Navbar() {
   const [count, setCount] = useState(0);
   const dispatch = useDispatch();
   const SeleccionarUbicacion = useSelector((state) => state.datosHome.mostrarUbicacion);
+  const { pais, provincia, municipio } = useParams();
 
+  const actualHomeUbicacion = municipio || provincia || pais
   
 
   return (
@@ -17,9 +20,9 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            <img src='../images/logoNoticiasd.png' alt=''/>
+            <img src='/images/logoNoticiasd.png' alt=''/>
           </a>
-          <p className='nombreUbicacion'>Argentina</p>
+          <p className='nombreUbicacion'>{actualHomeUbicacion}</p>
           <button
             className="navbar-toggler"
             type="button"
@@ -39,7 +42,7 @@ function Navbar() {
                 placeholder="      Buscar noticias, palabras clave..."
                 aria-label="Search"
               />
-              <button className="btn" type="submit" onClick={""}>
+              <button className="btn" type="submit" >
                 Elegir ubicacion
               </button>
             </form>

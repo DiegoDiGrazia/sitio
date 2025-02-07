@@ -1,10 +1,5 @@
 import { useState } from 'react';
-import CarruselNotas from './CarruselNotas';
-import MiniNotaConImagenVertical from './notasMini/miniNotaConImagenVertical';
-import BotonVerMas from './common/BotonVerMas';
-import NotaConVideo from './notasMini/notaConVideo';
-import NotaConVideoGrande from './notasMini/NotaConVideoGrande';
-import NotaConFondoNegro from './notasMini/NotaConFondoNegro';
+import NotaConFondoNegro from '../notasMini/NotaConFondoNegro';
 function ModuloTendencias() {
   return (
     <>

@@ -1,9 +1,5 @@
 import { useState } from 'react';
-import CarruselNotas from './CarruselNotas';
-import MiniNotaConImagenVertical from './notasMini/miniNotaConImagenVertical';
-import BotonVerMas from './common/BotonVerMas';
-import NotaConVideo from './notasMini/notaConVideo';
-import NotaConVideoGrande from './notasMini/NotaConVideoGrande';
+import NotaConVideoGrande from '../notasMini/NotaConVideoGrande';
 function ModuloWebstories() {
   return (
     <>

@@ -11,8 +11,11 @@ import { useSelector } from 'react-redux';
 import CustomMarker from './CustomMarker';
 
 const containerStyle = {
-    width: '100vw',
-    height: '100vh',
+    width: '100%',
+    height: '340px',
+    margin: "0px 0px",
+    borderRadius: "5px",
+    
   };
   
   const center = {

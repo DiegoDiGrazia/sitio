@@ -1,14 +1,14 @@
 import React from 'react';
 import AppMapa from './MapaUbicaciones';
 import MapaUbicaciones from './MapaUbicaciones';
+import "./ubicacion.css"
+import { useSelector } from 'react-redux';
 
 const ContainerUbicacion = () => {
 
-  const listaProvincias = [
-    {nombre : "buenos aires", id: "1"},
-    {nombre : "la plata", id: "2"},
-    {nombre : "caba", id: "3"},
-  ]
+
+
+const provinciasArgentinas = useSelector(state => state.datosHome.datoGeo.paises).filter(pais => pais.nombre === "Argentina")[0].provincias;
 
 
   return (
@@ -31,10 +31,23 @@ const ContainerUbicacion = () => {
           Usar ubicacion actual
         </button>
       </form>
-      <div className='row pt-5' style={{ backgroundColor: "white", width: "100%" }}>
-        <div className='col-6 d-flex flex-column justify-content-center align-items-center' style={{ color: "black" }}>
-          {listaProvincias.map((provincia) => (
-            <div key={provincia.id} style={{ color: "black" }}>{provincia.nombre}</div>
+      <div className='row contenedorProvinciasYUbicacion pt-4' style={{ backgroundColor: "white", width: "100%" }}>
+        <div className='col-6 contenedorNombreProvincias' style={{ color: "black" }}>
+          {provinciasArgentinas && provinciasArgentinas.map((provincia) => (
+            <div className="row filaDatosNota align-items-center">
+                <div className="col-auto p-0">
+                    <p className="inicialesConColores mb-0">{provincia.iso_id}</p>
+                </div>
+                <div className="col-10 p-0 align-items-center nombreProvincia" >
+                    <p >{provincia.nombre_completo}</p>
+                </div>
+                <div className="col-1 p-0 d-flex justify-content-end" >
+                  <button onClick={() => console.log(provincia)} className="botonIrAProvincia">  
+                    <img className= "imagenBotonIrAProvincia" src='/images/iconoIrAProvincia.png'/>
+                  </button>
+                </div>
+            </div>
+            
           ))}
         </div>
         <div className='col-6 d-flex justify-content-center align-items-center'>
