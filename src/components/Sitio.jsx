@@ -1,22 +1,15 @@
 import { useReducer, useState } from 'react';
-import Navbar from './header/Navbar';
-import NavbarCategorias from './header/NavbarCategorias';
-import PublicidadHorizontal from './publicidad/PublicidadHorizontal';
-import ModuloPortadaConCarrusel from './modulos/ModuloPortadaConCarrusel';
-import ModuloLoMasVisto from './modulos/ModuloLoMasVisto';
-import ModuloUltimasNoticiasConDestacadaDeLaSemana from './modulos/ModuloUltimasNoticiasConDestacadaDeLaSemana';
-import ModuloUltimasNoticiasConLoMasLeidoALaDerecha from './modulos/ModuloUltimasNoticiasConLoMasLeidoALaDerecha';
-import ModuloWebstories from './modulos/ModuloWebstories';
-import ModuloUltimasNoticiasConTendenciasAbajo from './modulos/ModuloUltimasNoticiasConTendenciasAbajo';
 import { useEffect } from 'react';
 import axios from 'axios';
-import HomePais from './Homes/HomePais';
+import HomePais from './HomesyNota/HomePais';
 import { useParams } from 'react-router-dom';
 import { setDatoGeo, setDatoPais } from '../redux/datosHome';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import HomeProvincia from './Homes/HomeProvincia';
-import HomeMunicipio from './Homes/HomeMunicipio';
+import HomeProvincia from './HomesyNota/HomeProvincia';
+import HomeMunicipio from './HomesyNota/HomeMunicipio';
+import "./HomesyNota/mobileHome.css"
+import React from 'react'; // Asegúrate de que esté presente
 
 function Sitio() {
   const [TOKEN, setTOKEN] = useState("");
@@ -77,6 +70,7 @@ function Sitio() {
         {municipio && <HomeMunicipio pais = {pais} provincia = {provincia} municipio = {municipio} />}
         {provincia && !municipio && <HomeProvincia pais = {pais} provincia = {provincia} />}
         {(pais && !provincia && !municipio) && <HomePais pais = {pais}/>}
+
     </>
   );
 }

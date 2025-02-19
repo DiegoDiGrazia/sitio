@@ -15,7 +15,7 @@ function NotaConVideo({nota}) {
 
   return (
     <>      
-    <div style={{width: "338px", marginLeft: "50px", padding: "0px"} }>
+    <div style={{width: "338px", marginLeft: "50px", padding: "0px"} } className="contenedorMiniVideo">
 
                     <img src={nota.imagen} style={{height: "180px", width: "338px", objectFit: "cover", borderRadius: "20px", padding: "0px"}}/>
                 <div className="col-auto p-0"> 

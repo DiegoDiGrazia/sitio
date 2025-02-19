@@ -17,7 +17,7 @@ function NotaConVideoGrande({nota}) {
 
   return (
     <>      
-    <div style={{width: "1110px", marginLeft: "50px", padding: "0px"} }>
+    <div style={{width: "1110px", marginLeft: "50px", padding: "0px"} } className="videoGrande">
 
                     <img src={nota.imagen} style={{height: "660px", width: "1110px", objectFit: "cover", borderRadius: "20px", padding: "0px"}}/>
                 <div className="col-auto p-0"> 

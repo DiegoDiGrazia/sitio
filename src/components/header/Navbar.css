@@ -5,7 +5,7 @@
     border-radius: 10px; /* Esquinas redondeadas */
     width: 342px;
     height: 40px; /* Altura del elemento */
-    background-image: url('/images/lupaBuscador.png'); /* Asegúrate de incluir la extensión */
+    background-image: url('../../../public/images/lupaBuscador.png'); /* Asegúrate de incluir la extensión */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
     background-position: 7px center; /* Centra la imagen en el fondo */
     padding-bottom: 5px;
@@ -42,7 +42,7 @@
     width: 164px;
     height: 38px;
     background-color: #FF653B !important;
-    background-image: url('/images/map-pin.png'); /* Asegúrate de incluir la extensión */
+    background-image: url('../../../public/images/map-pin.png'); /* Asegúrate de incluir la extensión */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
     background-position: 7px center; /* Centra la imagen en el fondo */
     border: none !important;

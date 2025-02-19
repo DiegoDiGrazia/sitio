@@ -5,6 +5,8 @@ import { setMostrarUbicacion } from '../../redux/datosHome';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import React from "react";
+
 
 function Navbar() {
   const [count, setCount] = useState(0);

@@ -5,23 +5,7 @@ import Categoria from "./common/Categoria";
 function CarruselNotas2({notas, iso3}) {
   const [activeIndex, setActiveIndex] = useState(0);
   
-  
-  
-  const notas2= [
-    { id: 1, src: "./images/notaPortadaImagen.png", alt: "Slide 1", categorias: "economia", titulo: "Starlink: los precios del servicio satelital de internet de elon Musk", 
-      contenido: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla varius lorem in tortor interdum, non efficitur justo malesuada. Suspendisse potenti. Mauris ultrices, sapien eu volutpat elementum, nunc lectus malesuada risus, at viverra turpis eros vel turpis. Nullam sodales sapien eu est. " },
-      { id: 2, src: "./images/notaPortadaImagen.png", alt: "Slide 2", categorias: "Agricultura", titulo: "el tiulo de la nota 2", contenido: "contenido de la nota 2 " },
-      { id: 3, src: "./images/notaPortadaImagen.png", alt: "Slide 3", categorias: "Agricultura", titulo: "el tiulo de la nota 3", contenido: "contenido de la nota 3" },
-      { id: 4, src: "./images/notaPortadaImagen.png", alt: "Slide 4", categorias: "Agricultura", titulo: "el tiulo de la nota 4", contenido: "contenido de la nota 4" },
-      { id: 5, src: "./images/notaPortadaImagen.png", alt: "Slide 5", categorias: "Agricultura", titulo: "el tiulo de la nota 5", contenido: "contenido de la nota 5" },
-      
-      
-    ]
 
-
-  const handleSelect = (index) => {
-    setActiveIndex(index);
-  };
  
   return (
     <div
@@ -56,7 +40,7 @@ function CarruselNotas2({notas, iso3}) {
             <div style={{marginTop:"30px"}}>
               <Categoria categoria={nota.categorias}/>
               <p className="titulo">{nota.titulo}</p>
-              <p className="contenido">{nota.contenido}</p>
+              <p className="contenido">{nota.copete}</p>
             </div>
 
           </div>

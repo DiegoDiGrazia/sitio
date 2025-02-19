@@ -3,6 +3,8 @@ import Navbar from './Navbar';
 import NavbarCategorias from './NavbarCategorias';
 import ContainerUbicacion from './elegirUbicacion/ContainerUbicacion';
 import { useSelector } from 'react-redux';
+import React from "react";
+
 
 function Header() {
     const SeleccionarUbicacion = useSelector((state) => state.datosHome.mostrarUbicacion);

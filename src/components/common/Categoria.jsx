@@ -1,4 +1,6 @@
 
+import React from "react";
+
 function Categoria({ categoria }) {
     const estiloCategoria = {
       fontSize: "16px",

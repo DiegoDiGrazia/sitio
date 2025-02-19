@@ -1,6 +1,6 @@
 
 import "./publicidad.css"
-
+import React from "react";
 function PublicidadHorizontal() {
 
 

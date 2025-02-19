@@ -1,4 +1,6 @@
+import React from "react";
 import { useState } from 'react';
+
 
 function NavbarCategorias() {
   const [count, setCount] = useState(0);

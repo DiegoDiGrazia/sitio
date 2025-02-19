@@ -3,7 +3,7 @@ import "./MiniNotaConImagenVertical.css"
 import Categoria from "../common/Categoria";
 
 function BannerNegroVerticalMasLeidas({notas}) {
-  if(!notas){
+  if(!notas || !notas[0]){
     return(
         <div>cargando</div>
     )
@@ -13,9 +13,9 @@ function BannerNegroVerticalMasLeidas({notas}) {
 
   return (
     <>      
-        <div style={{background: "black", width: "330px", marginLeft: "50px", borderRadius: "15px", padding: "30px 25px 0px 25px"}}>
+        <div style={{background: "black", width: "330px", marginLeft: "50px", borderRadius: "15px", padding: "30px 25px 0px 25px"}} className="laMasLeida">
             <p style={{color: "white", fontSize: "28px", fontFamily: 'Big Shoulders Text, sans-serif', fontWeight: "bold"}}>
-                LAS MAS LEIDAS EN <span style={{color: "#DD2590"}}>CORDOBA</span></p>
+                LAS MAS LEIDAS EN <span style={{color: "#DD2590"}}>{notas[0].cliente}</span></p>
                 {notas.map((nota, index) => (
           <div 
             key={nota.id || index} // Agregamos la key

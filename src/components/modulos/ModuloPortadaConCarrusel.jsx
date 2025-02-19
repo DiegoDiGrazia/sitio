@@ -1,4 +1,6 @@
-import { useState } from 'react';
+
+import React from "react";
+
 import CarruselNotas from '../CarruselNotas';
 import MiniNotaConImagenVertical from '../notasMini/miniNotaConImagenVertical';
 import NotaMiniGenerica from '../notasMini/notaMiniGenerica';
@@ -24,7 +26,7 @@ function ModuloPortadaConCarrusel({notasCarrusel, notasDebajoCarrusel,notasDebaj
 
         {notasDebajoCarrusel1Fila && 
           <>
-            <div className='row' style={{borderBottom: "1px solid #bababa", marginTop:"40px"}}>
+            <div className='row DebajoCarrusel' style={{borderBottom: "1px solid #bababa", marginTop:"40px"}}>
               <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota={notasDebajoCarrusel1Fila[0]}/>
               <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota={notasDebajoCarrusel1Fila[1]}/>
               <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota={notasDebajoCarrusel1Fila[2]}/>
@@ -33,12 +35,12 @@ function ModuloPortadaConCarrusel({notasCarrusel, notasDebajoCarrusel,notasDebaj
         }
         {notasDebajoCarrusel && 
           <>
-            <div className='row' style={{borderBottom: "1px solid #bababa", marginTop:"40px"}}>
+            <div className='row DebajoCarrusel' style={{borderBottom: "1px solid #bababa", marginTop:"40px"}}>
               <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota={notasDebajoCarrusel[0]}/>
               <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota={notasDebajoCarrusel[1]}/>
               <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota={notasDebajoCarrusel[2]}/>
             </div>
-            <div className='row' style={{borderBottom: "1px solid #bababa", marginTop:"40px"}}>
+            <div className='row DebajoCarrusel' style={{borderBottom: "1px solid #bababa", marginTop:"40px"}}>
               <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota={notasDebajoCarrusel[3]}/>
               <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota={notasDebajoCarrusel[4]}/>
               <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota={notasDebajoCarrusel[5]}/>

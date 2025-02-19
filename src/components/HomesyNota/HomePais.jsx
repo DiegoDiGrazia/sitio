@@ -79,6 +79,8 @@ function HomePais({ pais }) {
         formData.append("desde_limite", page);
         const response = await fetchNotas(formData, "", dispatch);
         setNotasScrollInfinito(prevNotas => [...prevNotas, ...response.data.item.notas]);
+        dispatch(eliminarRepetidos());
+
       };
   
       loadMoreNotas();
@@ -97,11 +99,11 @@ function HomePais({ pais }) {
         }}
     >
   <div className="col-auto p-0">
-    <ModuloPortadaConCarrusel notasPais={notasPais} notasDebajoCarrusel={suProvincia}/>
-    <ModuloUltimasNoticiasConDestacadaDeLaSemana notasSuProvincia = {suProvincia} />
+    <ModuloPortadaConCarrusel notasCarrusel={notasPais} notasDebajoCarrusel1Fila={suProvincia} notasDerechaCarrusel= {notasPais.slice(2)}/>
+    <ModuloUltimasNoticiasConDestacadaDeLaSemana notasSuProvincia = {suProvincia.slice(3)} />
     <ModuloLoMasVisto notas = {notasMunicipio}/>
     <PublicidadHorizontal />
-    <ModuloUltimasNoticiasConLoMasLeidoALaDerecha notas = {notasPais} notasScrollInfinito = {notasScrollInfinito}/>
+    <ModuloUltimasNoticiasConLoMasLeidoALaDerecha notas = {notasPais.slice(5)} notasScrollInfinito = {notasScrollInfinito.slice(5)}/>
 
 
   </div>

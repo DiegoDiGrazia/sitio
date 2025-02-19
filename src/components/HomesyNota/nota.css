@@ -1,0 +1,31 @@
+.col .tituloNota{
+    font-size: 48px;
+    color: #101828;
+    font-weight: 900;
+    width: 100%;
+    justify-content: end;
+}
+
+.contenedorNota{
+    padding-left: 30px;
+    margin-top: 50px;
+}
+
+.contenedorNota td{
+    color: #101828b3 !important;
+}
+.contenedorNota .copete{
+    color: #101828b3 !important;
+    font-size: 24px;
+    margin-top: 30px    ;
+}
+.contenedorNota img{
+    width: 100%;
+    object-fit: cover;
+    justify-items: center;
+    border-radius: 10px;
+    margin: 40px 0px;
+}
+.contenedorNota .imagenAvatarNota{
+    margin-top: 0px;
+}

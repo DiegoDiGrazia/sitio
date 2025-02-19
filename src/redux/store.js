@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import datosHome from './datosHome'; // Importar el reducer correctamente
+import datosHome from './datosHome.js'; // Importar el reducer correctamente
 
 // Configurar la tienda
 export const store = configureStore({

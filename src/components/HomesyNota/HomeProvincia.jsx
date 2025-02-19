@@ -13,9 +13,11 @@ import { setNotasMunicipio, setNotasPais, setNotasProvincia, setNotasSuProvincia
 import { fetchNotas } from '../common/Api.jsx';
 import { eliminarRepetidos } from '../../redux/datosHome.js';
 import Header from '../header/Header.jsx';
-import ContainerUbicacion from '../header/elegirUbicacion/ContainerUbicacion.jsx';
+import "./mobileHome.css"
+import React from 'react';
 
-function HomeMunicipio({ pais, provincia, municipio }) {
+
+function HomeProvincia({ pais, provincia }) {
     const [datoGeoProvincia, setDatoGeoProvincia ] = useState("");
     
     const dispatch = useDispatch();
@@ -60,10 +62,14 @@ function HomeMunicipio({ pais, provincia, municipio }) {
 
         const formData4 = new FormData();
         formData4.append('token', 1);
-        formData4.append("municipio", municipio);
+        formData4.append("municipio", "municipio de lanús");
         const fetch4 = fetchNotas(formData4, setNotasMunicipio, dispatch);
   
-        await Promise.all([fetch1, fetch2, fetch3, fetch4]); ///despues de terminar, elimino los repetidos
+        await Promise.all([fetch1, fetch2, fetch3, fetch4]);
+  
+        // Ejecutar la función cuando terminen de cargar los 3 fetch
+        console.log('Todos los fetch han terminado');
+        // Aquí puedes llamar a la función que desees ejecutar
         dispatch(eliminarRepetidos());
       };
   
@@ -84,7 +90,8 @@ function HomeMunicipio({ pais, provincia, municipio }) {
       const loadMoreNotas = async () => {
         const formData = new FormData();
         formData.append('token', 1);
-        formData.append("pais", pais);
+        formData.append("provincia", provinciaFormateada);
+        formData.append("region", datoGeoProvincia.region);
         formData.append("limite", "9");
         formData.append("desde_limite", page);
         const response = await fetchNotas(formData, "", dispatch);
@@ -107,8 +114,11 @@ function HomeMunicipio({ pais, provincia, municipio }) {
         }}
     >
   <div className="col-auto p-0">
-    <ModuloPortadaConCarrusel notasCarrusel={notasMunicipio.slice(0,2)} notasDebajoCarrusel={provinciaHome} notasDebajoCarrusel1Fila = {notasPais} notasDerechaCarrusel={notasMunicipio.slice(2)}/>
-    <ModuloUltimasNoticiasConLoMasLeidoALaDerecha notas = {notasScrollInfinito} notasScrollInfinito = {notasScrollInfinito.slice(6)}/>
+    <ModuloPortadaConCarrusel notasCarrusel={provinciaHome} notasDerechaCarrusel={notasPais}/>
+    <ModuloUltimasNoticiasConDestacadaDeLaSemana notasSuProvincia = {provinciaHome.slice(2)} /> {/* notas de la provincia */}
+    <ModuloLoMasVisto notas = {notasMunicipio}/>  {/* Aca van las notas de los municipios de la provincia */}
+    <PublicidadHorizontal />
+    <ModuloUltimasNoticiasConLoMasLeidoALaDerecha notas = {provinciaHome.slice(10)} notasScrollInfinito = {notasScrollInfinito}/>
 
 
   </div>
@@ -130,4 +140,4 @@ function HomeMunicipio({ pais, provincia, municipio }) {
   );
 }
 
-export default HomeMunicipio;
+export default HomeProvincia;

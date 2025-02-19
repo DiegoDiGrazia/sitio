@@ -1,0 +1,140 @@
+@font-face {
+    font-family: "AeonikBold";
+    src: url("/src/components/common/FontAeonik/._AeonikTRIAL-Bold.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+* {
+    font-family: "AeonikBold", sans-serif;
+}
+
+@media screen and (max-width: 767px) {
+    .publicidadHorizontalContainer img {
+      display: none;
+    }
+
+    .carruselContainer{
+        width: auto;
+        padding-right: 20px;
+        height: auto;
+        font-family: "AeonikBold", sans-serif;
+    }
+    .carousel-inner img {
+        width: auto;
+        max-width: 100%;
+        height: 300px;
+        max-height: 100%;
+      }
+      .carousel-inner .titulo {
+        font-size: 24px;
+        margin-bottom: 2px;
+      }
+      .carousel-indicators {
+        display: flex;
+        justify-content: center;
+        transform: translateX(12%);
+        width: auto; /* Evita que ocupe todo el ancho */
+        top: 300px
+      }
+      .carousel .carousel-control-prev-icon{
+        top: -90px;
+      }
+
+      .carousel .carousel-control-next-icon{
+        top: -90px;
+        left: -20px;
+
+      }
+      .moduloPortada .ultimasNoticias {
+        font-size: 28px !important;
+        width: 300px;
+        margin-left: 20px;
+      }
+
+      .contenedorMiniNotaGenerica{
+        margin-left: 20px !important;
+      }
+
+      /* Seccion destacada de la semana */
+      .destacadaDeLaSemanaContainer{
+        width: 340px !important;
+        height: auto !important;
+        margin-left: 30px !important;
+      }
+      .destacadaDeLaSemanaContainer p{
+        margin-left: 10px !important;
+      }
+      .destacadaDeLaSemanaContainer .datosCliente{
+        display: none;
+      }
+      .destacadaDeLaSemanaContainer img{
+        width: 300px !important;
+      }
+      .destacadaDeLaSemanaContainer p{
+        margin-top: 0px !important;
+      }
+      .destacadaDeLaSemanaContainer{
+        margin-bottom: 30px;
+      }
+      .moduloPortada .flex-md-row .contenedorMiniNotaGenerica{
+        margin-left:30px   !important;
+        width: 340px
+      }
+
+      /* Seccion lo mas visto (Negro) */
+
+      .loMasVisto {
+        width: auto !important;
+      }
+      .loMasVisto .contenedorMiniVideo{
+        margin-left: 20px !important;
+      }
+
+      .loMasVisto .contenedorMiniVideo .filaDatosNota{
+        margin-left: 5px;
+      }
+      .loMasVisto .videoGrande {
+        display: none;
+      }
+      .ocultarNotaMini .contenedorMiniNotaGenerica{
+        display: none !important;
+      }
+      .hiperlocales .laMasLeida{
+        margin-left: 30px !important;
+      }
+      
+      .DebajoCarrusel{
+        margin-left: 0px !important;
+      }
+
+      /* Seccion nota */
+      .contenedorNota .justify-content-center{
+        width: auto !important;
+        padding: 0px !important;
+        justify-content: start !important;
+
+      }
+      .tituloNota{
+        width: 340px !important;
+        padding: 0px !important;
+      }
+      .copete{
+        width: 340px !important;
+        padding: 0px !important;
+      }
+      .contenedorNota img{
+        width: 320px !important;
+      }
+
+      .contenedorNota .filaDatosNota img{
+        width: auto !important;
+      }
+      .contenedorNota .laMasLeida{
+        display: none;
+      }
+
+  }
+
+
