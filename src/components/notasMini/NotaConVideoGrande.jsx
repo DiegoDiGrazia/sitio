@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./MiniNotaConImagenVertical.css"
 import Categoria from "../common/Categoria";
 import { formatearFecha } from "../common/formats";
+import { Link } from "react-router-dom";
 
 function NotaConVideoGrande({nota}) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -21,7 +22,16 @@ function NotaConVideoGrande({nota}) {
 
                     <img src={nota.imagen} style={{height: "660px", width: "1110px", objectFit: "cover", borderRadius: "20px", padding: "0px"}}/>
                 <div className="col-auto p-0"> 
-                        <p style={{fontSize: "30px", fontWeight: "bold", marginTop: "10px", color: "#ffffff"}}>{nota.titulo}</p>
+                        <p style={{fontSize: "30px", fontWeight: "bold", marginTop: "10px", color: "#ffffff"}}>
+                        <Link 
+                          to={`/nota/${nota.id_noti }`} 
+                          target="_blank" 
+                          style={{ textDecoration: "none", color: "inherit" }}
+                        >
+                          {nota.titulo}
+                        </Link>
+
+                        </p>
                 </div>
 
             <div className="row mt-3 filaDatosNota" style={{ border: border ? undefined : "none" }}>

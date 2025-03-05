@@ -7,9 +7,10 @@ module.exports = {
   entry: './src/main.jsx', // Archivo de entrada principal
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.[contenthash].js', // Nombre único para el bundle
-    publicPath: '/', // Para manejar rutas correctamente en React Router
-  },
+    filename: 'bundle.[contenthash].js',
+    publicPath: '/', // Asegura rutas relativas
+},
+
   module: {
     rules: [
       {
@@ -44,32 +45,7 @@ module.exports = {
     compress: true,
     hot: true,
     port: 4000, // Puerto para el servidor de desarrollo
-    proxy: [
-      {
-        context: [
-          '/api',
-          '/codigo_recuperacion',
-          '/cambiar_clave',
-          '/app_obtener_usuarios',
-          '/app_obtener_notas',
-          '/app_obtener_medios',
-          '/app_obtener_categorias',
-          '/reporte_descargarpdfwa',
-          '/app_obtener_noticias',
-          '/app_obtener_noticia',
-          '/app_obtener_medios_noticia',
-          '/app_obtener_impresiones_plataforma_noticia',
-          '/app_obtener_listado_categorias',
-          '/app_subir_nota',
-          '/app_obtener_noticias_abm',
-          '/app_obtener_clientes',
-          '/app_obtener_provincias',
-          '/app_obtener_municipios',
-        ],
-        target: 'https://panel.serviciosd.com/',
-        changeOrigin: true,
-      },
-    ],
+    
   },
   optimization: {
     minimize: true,

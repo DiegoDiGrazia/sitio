@@ -13,7 +13,7 @@ import { setNotasMunicipio, setNotasPais, setNotasProvincia, setNotasSuProvincia
 import { fetchNotas } from '../common/Api.jsx';
 import { eliminarRepetidos } from '../../redux/datosHome.js';
 import Header from '../header/Header.jsx';
-import ContainerUbicacion from '../header/elegirUbicacion/ContainerUbicacion.jsx';
+import React from 'react';
 
 function HomePais({ pais }) {
     const datosDeArgentina = useSelector((state) => state.datosHome);

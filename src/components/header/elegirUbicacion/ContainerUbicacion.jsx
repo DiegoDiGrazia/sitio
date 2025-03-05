@@ -3,14 +3,18 @@ import AppMapa from './MapaUbicaciones';
 import MapaUbicaciones from './MapaUbicaciones';
 import "./ubicacion.css"
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const ContainerUbicacion = () => {
 
 
 
-const provinciasArgentinas = useSelector(state => state.datosHome.datoGeo.paises).filter(pais => pais.nombre === "Argentina")[0].provincias;
+  const paises = useSelector(state => state.datosHome?.datoGeo?.paises) || []; // Asegura que es un array
+  const provinciasArgentinas = paises.find(pais => pais.nombre === "Argentina")?.provincias;
 
-
+  if(!provinciasArgentinas){
+    return <div>cargando...</div>
+  }
   return (
     <div className="d-flex flex-column justify-content-center align-items-center containerUbicacion" style={{ backgroundColor: 'black', color: "white" }}>
       <p className="row mt-3" style={{ fontWeight: "bold", fontSize: "36px", textAlign: "center" }}>
@@ -39,7 +43,15 @@ const provinciasArgentinas = useSelector(state => state.datosHome.datoGeo.paises
                     <p className="inicialesConColores mb-0">{provincia.iso_id}</p>
                 </div>
                 <div className="col-10 p-0 align-items-center nombreProvincia" >
-                    <p >{provincia.nombre_completo}</p>
+                    <p >
+                    <Link 
+                      to={`/Argentina/${provincia.cat_provincia}`.replace(/\s/g, "-")}
+                      target="_blank" 
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      {provincia.nombre_completo}
+                      </Link>
+                      </p>
                 </div>
                 <div className="col-1 p-0 d-flex justify-content-end" >
                   <button onClick={() => console.log(provincia)} className="botonIrAProvincia">  

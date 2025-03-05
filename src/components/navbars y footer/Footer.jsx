@@ -39,15 +39,15 @@ const Footer = () => {
     <footer className={`footer ${isVisible ? 'visible' : ''} ${isExpanded ? 'expanded' : ''}`}>
       <div className="row">
         <div className="col-6">
-            <img  src='../images/logoNoticiasDBlanco.png'/>
+            <img  src='/images/logoNoticiasDBlanco.png'/>
         </div>
         <div className="col-6 align-items-center">
             <button 
             className="botonVerMasFooter align-items-center" 
             onClick={toggleFooterExpansion}>
             {isExpanded 
-            ? (<><span>Ver menos  </span><img src='../images/arrowblancoabajo.png' alt="Arrow" /></>) 
-            : (<><span>Ver más  </span><img src='../images/arrowblancoabajo.png' style={{transform: "scaleY(-1)", marginBottom: "3x"}} alt="Arrow" /></>)
+            ? (<><span>Ver menos  </span><img src='/images/arrowblancoabajo.png' alt="Arrow" /></>) 
+            : (<><span>Ver más  </span><img src='/images/arrowblancoabajo.png' style={{transform: "scaleY(-1)", marginBottom: "3x"}} alt="Arrow" /></>)
             }
             </button>
         </div>

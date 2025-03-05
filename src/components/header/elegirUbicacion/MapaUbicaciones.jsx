@@ -1,7 +1,6 @@
 import React from 'react';
-import {createRoot} from 'react-dom/client';
-import {APIProvider, Map} from '@vis.gl/react-google-maps';
-import { useState } from 'react';
+
+import { Link } from 'react-router-dom';
 
 const apiKey = "AIzaSyD9NLEyj6YNOQige8uQEHLrTOOTSHL3c_s"
 
@@ -54,12 +53,18 @@ const containerStyle = {
                     name={provincia.iso_nombre}
                 />
                 {provincia.municipios.map((municipio) => (
+                      <Link 
+                      to={`/${provincia.cat_provincia}/${municipio.cat_municipio}`} 
+                      target="_blank" 
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
                     <CustomMarker 
                         key={municipio.municipio_id}
                         id={municipio.municipio_id}
                         position={{ lat: municipio.centroide_lat, lng: municipio.centroide_lon }}
                         name={municipio.nombre}
                     />
+                    </Link>
                 ))}
             </React.Fragment>
         ))}       

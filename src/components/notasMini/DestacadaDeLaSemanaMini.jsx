@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./MiniNotaConImagenVertical.css"
 import Categoria from "../common/Categoria";
 import { formatearFecha } from "../common/formats";
+import { Link } from "react-router-dom";
 
 function DestacadaDeLaSemanaMini({nota}) {
     if(!nota){
@@ -23,8 +24,15 @@ function DestacadaDeLaSemanaMini({nota}) {
                 {/* columna categoria y nota */}
                 <div className="col-12 col-md-6"> 
                         <p style={{color: "#FF653B", fontSize: "24px", fontWeight: "bold", marginTop: "20px"}}>Destacada de la semana</p>
-                        <p style={{fontSize: "24px", fontWeight: "bold", marginTop: "10px", color: "#ffffff"}}>{nota.titulo}</p>
-                        <p style={{fontSize: "16px", fontWeight: "", marginTop: "10px", color: "#FFFFFF"}}>{nota.contenido}</p>
+                        <p style={{fontSize: "24px", fontWeight: "bold", marginTop: "10px", color: "#ffffff"}}>
+                            <Link 
+                                to={`/nota/${nota.id_noti }`} 
+                                target="_blank" 
+                                style={{ textDecoration: "none", color: "inherit" }}
+                            >
+                                {nota.titulo}
+                            </Link></p>
+                        <p style={{fontSize: "16px", fontWeight: "", marginTop: "10px", color: "#FFFFFF"}}>{nota.copete}</p>
                     <div className="row datosCliente">
                         <div className="col-2 p-0">
                             <p className="inicialesConColores" style={{marginLeft: "10px"}}>CBA</p>

@@ -85,19 +85,32 @@ function HomeProvincia({ pais, provincia }) {
       window.addEventListener('scroll', handleScroll);
       return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-  
+    
+    const [isFetching, setIsFetching] = useState(false); // Nuevo estado
+
     useEffect(() => {
       const loadMoreNotas = async () => {
+        if (isFetching) return; // Evita múltiples llamadas simultáneas
+    
+        setIsFetching(true); // Indica que la petición está en curso
+    
         const formData = new FormData();
         formData.append('token', 1);
         formData.append("provincia", provinciaFormateada);
         formData.append("region", datoGeoProvincia.region);
         formData.append("limite", "9");
         formData.append("desde_limite", page);
-        const response = await fetchNotas(formData, "", dispatch);
-        setNotasScrollInfinito(prevNotas => [...prevNotas, ...response.data.item.notas]);
+    
+        try {
+          const response = await fetchNotas(formData, "", dispatch);
+          setNotasScrollInfinito(prevNotas => [...prevNotas, ...response.data.item.notas]);
+        } catch (error) {
+          console.error("Error cargando más notas:", error);
+        } finally {
+          setIsFetching(false); // Libera el bloqueo cuando termina la petición
+        }
       };
-  
+    
       loadMoreNotas();
     }, [page, pais, dispatch]);
   

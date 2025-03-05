@@ -35,3 +35,23 @@
     border-bottom: 1px solid rgb(206, 205, 205);
     margin-bottom: 20px;
 }
+
+.truncate-text-5 {
+    display: -webkit-box;
+    display: box; /* Propiedad estándar */
+    -webkit-line-clamp: 5; /* Número de líneas */
+    line-clamp: 5; /* Propiedad estándar */
+    -webkit-box-orient: vertical;
+    box-orient: vertical; /* Propiedad estándar */
+    overflow: hidden;
+  }
+
+  .truncate-text-4 {
+    display: -webkit-box;
+    display: box; /* Propiedad estándar */
+    -webkit-line-clamp: 4; /* Número de líneas */
+    line-clamp: 4; /* Propiedad estándar */
+    -webkit-box-orient: vertical;
+    box-orient: vertical; /* Propiedad estándar */
+    overflow: hidden;
+  }

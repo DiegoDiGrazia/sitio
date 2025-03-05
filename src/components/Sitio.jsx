@@ -70,6 +70,8 @@ function Sitio() {
         {municipio && <HomeMunicipio pais = {pais} provincia = {provincia} municipio = {municipio} />}
         {provincia && !municipio && <HomeProvincia pais = {pais} provincia = {provincia} />}
         {(pais && !provincia && !municipio) && <HomePais pais = {pais}/>}
+        {(!pais && !provincia && !municipio) && <HomePais pais = {"Argentina"}/>}
+
 
     </>
   );

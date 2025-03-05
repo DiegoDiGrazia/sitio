@@ -1,23 +1,14 @@
 import { useState } from 'react';
 import PublicidadHorizontal from '../publicidad/PublicidadHorizontal.jsx';
-import ModuloPortadaConCarrusel from '../modulos/ModuloPortadaConCarrusel.jsx';
-import ModuloLoMasVisto from '../modulos/ModuloLoMasVisto.jsx';
-import ModuloUltimasNoticiasConLoMasLeidoALaDerecha from '../modulos/ModuloUltimasNoticiasConLoMasLeidoALaDerecha.jsx';
-import ModuloUltimasNoticiasConDestacadaDeLaSemana from '../modulos/ModuloUltimasNoticiasConDestacadaDeLaSemana.jsx';
 import { useEffect } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
 import Footer from '../navbars y footer/Footer.jsx';
-import { useDispatch } from 'react-redux';
-import { setNotasMunicipio, setNotasPais, setNotasProvincia, setNotasSuProvincia } from '../../redux/datosHome.js';
-import { fetchNotas } from '../common/Api.jsx';
-import { eliminarRepetidos } from '../../redux/datosHome.js';
 import Header from '../header/Header.jsx';
-import ContainerUbicacion from '../header/elegirUbicacion/ContainerUbicacion.jsx';
 import { useParams } from 'react-router-dom';
 import "./nota.css"
 import BannerNegroVerticalMasLeidas from '../notasMini/BannerNegroVerticalMasLeidas.jsx';
 import { formatearFecha } from '../common/formats.js';
+import React from 'react';
 
 function Nota({ pais }) {
   const [TOKEN, setTOKEN] = useState("");
@@ -72,19 +63,18 @@ function Nota({ pais }) {
       const formData = new FormData();
       formData.append('token', TOKEN);
       formData.append('categoria', "PUBLICADO");
-      formData.append('desde', "2023-01-01");
-      formData.append('hasta', "2028-01-01");
+      formData.append('desde', "");
+      formData.append('hasta', "");
       formData.append('cliente', nota.cliente);
-      formData.append('limite', 3);
-      formData.append('desde_limite', 1);
-      formData.append('id', id);
+      formData.append('limit', 15);
+      formData.append('offset', 0);
+      formData.append('id', "");
       axios.post("https://panel.serviciosd.com/app_obtener_noticias_abm", formData, { 
         headers: { 'Content-Type': 'multipart/form-data' },
     })
     .then((response) => {
         if (response) {
           console.log(response)
-
           setNotaABM(response.data.item[0])
           setNotasBanner(response.data.item.slice(1,5))
 
@@ -99,6 +89,10 @@ function Nota({ pais }) {
     }
 }, [TOKEN, tokenLoaded, nota]);
 
+  if(!nota){
+    return <div>cargando</div>
+  }
+
   return (
     <>
     <PublicidadHorizontal/>
@@ -107,11 +101,12 @@ function Nota({ pais }) {
     <div className='row contenedorNota'>
       <div className='col-auto '>
         <div className='row justify-content-center mt-4'>
-          <div className='col-6'> 
-          <h1 className='tituloNota'>{notaABM.titulo}</h1>
-          <h2 className='copete'>{notaABM.copete} </h2>
-          <img src={"https://panel.serviciosd.com/img" + notaABM.imagen_principal}></img>
-          <div dangerouslySetInnerHTML={{ __html: notaABM.parrafo }} />
+          <div className='col-12 col-md-6'> 
+          <h1 className='tituloNota'>{nota.titulo}</h1>
+          <h2 className='copete'>{nota.copete} </h2>
+          <img src={nota.imagen}></img>
+
+          <div className='contenidoNotaDanger' dangerouslySetInnerHTML={{ __html: nota.content }} />
 
           {/* SECTOR AUTOR */}
           <div className="row mt-3 filaDatosNota">
@@ -119,8 +114,8 @@ function Nota({ pais }) {
                 <img src='/images/AvatarEditor.png' className='imagenAvatarNota'></img>
             </div>
             <div className="col-8 p-0" >
-                <p style={{color: "black", fontWeight: "bold", marginBottom: "0px", marginLeft: "10px"}}>{"Autor"}</p>
-                <p style={{color: "#BABABA" , marginLeft: "10px"}}>{formatearFecha(notaABM.fecha_creacion)}</p>
+                <p style={{color: "black", fontWeight: "bold", marginBottom: "0px", marginLeft: "10px"}}>{nota.authors ? nota.authors : nota.cliente}</p>
+                <p style={{color: "#BABABA" , marginLeft: "10px"}}>{formatearFecha(nota.f_pub)}</p>
 
             </div>
         </div>

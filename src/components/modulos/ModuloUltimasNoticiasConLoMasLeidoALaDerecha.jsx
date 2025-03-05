@@ -13,7 +13,7 @@ function ModuloUltimasNoticiasConLoMasLeidoALaDerecha({notas, notasScrollInfinit
           rows.push(
             <div className='row' key={i}>
               <div className="col-12 col-md-4">
-                <NotaMiniGenerica width={"338px"} height={"361px"} tieneContenido={true} fontSizeContenido={"16px"} fontSizeTitulo={"16px"} nota={notasScrollInfinito[i]} />
+                <NotaMiniGenerica width={"338px"} height={"361px"} tieneContenido={true} fontSizeContenido={"18px"} fontSizeTitulo={"18px"} nota={notasScrollInfinito[i]} />
               </div>
               {notasScrollInfinito[i + 1] && 
               <div className="col-12 col-md-4">
@@ -32,18 +32,23 @@ function ModuloUltimasNoticiasConLoMasLeidoALaDerecha({notas, notasScrollInfinit
       };
 
 
+  if(!notas || !notas[0]){
+    return(
+        <div></div>
+    )
+  }
   return (
     <>
         <div className='row moduloPortada hiperlocales mt-4' style={{backgroundColor: "#ffffff", width: "1205px" }}>
             <div className='row' style={{paddingTop: "0px"}}>
-                <div className='col-7' style={{marginRight: "32px"}}>
-                <p className= "ultimasNoticias"style={{fontSize: "36px", color: "black", fontWeight: "bold" }}>Ultimas noticias en <span style={{color: "#DD2590"}}>Argentina</span></p>
+                <div className='col-9' style={{marginRight: "32px"}}>
+                <p className= "ultimasNoticias"style={{fontSize: "36px", color: "black", fontWeight: "bold" }}>Ultimas noticias en <span style={{color: "#DD2590"}}>{notas[0].cliente}</span></p>
                 
                 </div>
-                <div className='col' style={{paddingTop: "10px", marginLeft: "42px"}}>
+                {/* <div className='col' style={{paddingTop: "10px", marginLeft: "42px"}}>
 
                     <BotonVerMas/>       
-                </div>     
+                </div>      */}
             </div>
             <div className="row" style={{ borderBottom: "1px solid #bababa" }}>
                 <div className="col-12 col-md-4">

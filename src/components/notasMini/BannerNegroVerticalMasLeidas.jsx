@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./MiniNotaConImagenVertical.css"
 import Categoria from "../common/Categoria";
+import { Link } from "react-router-dom";
 
 function BannerNegroVerticalMasLeidas({notas}) {
   if(!notas || !notas[0]){
     return(
-        <div>cargando</div>
+        <div></div>
     )
   }
 
@@ -45,7 +46,13 @@ function BannerNegroVerticalMasLeidas({notas}) {
               className="col" 
               style={{ fontFamily: 'Big Shoulders Text, sans-serif' }}
             >
-              {nota.titulo}
+                <Link 
+                to={`/nota/${nota.id_noti}`} 
+                target="_blank" 
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                {nota.titulo}
+              </Link>
             </div>
           </div>
         ))}

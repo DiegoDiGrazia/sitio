@@ -3,6 +3,7 @@ import "./MiniNotaConImagenVertical.css"
 import Categoria from "../common/Categoria";
 import { useSelector } from 'react-redux';
 import { formatearFecha } from "../common/formats";
+import { Link } from "react-router-dom";
 
 function MiniNotaConImagenVertical({border, nota}) {
     if(!nota){
@@ -22,7 +23,14 @@ const iso_3 = useSelector((state) => state.datosHome.datoPais.iso_3);
                 {/* columna categoria y nota */}
                 <div className="col-8" style={{width: "220px"}}> 
                         <Categoria categoria={nota.categorias}/>
-                        <p style={{fontSize: "18px", fontWeight: "bold", marginTop: "10px", color: "#101828"}}>{nota.titulo}</p>
+                        <p style={{fontSize: "18px", fontWeight: "bold", marginTop: "10px", color: "#101828"}} className="truncate-text-5">              
+                            <Link 
+                                to={`/nota/${nota.id_noti }`} 
+                                target="_blank" 
+                                style={{ textDecoration: "none", color: "inherit" }}
+                            >
+                                {nota.titulo}
+                            </Link></p>
                 </div>
             </div>
             <div className="row mt-3 filaDatosNota" style={{ border: border ? undefined : "none" }}>

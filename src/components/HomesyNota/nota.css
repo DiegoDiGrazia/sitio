@@ -29,3 +29,19 @@
 .contenedorNota .imagenAvatarNota{
     margin-top: 0px;
 }
+
+.contenedorNota .contenidoNotaDanger p{
+    font-size: 18px;
+    color: #101828b3;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 767px) {
+    .contenedorNota {
+      width: 100% !important;
+    }
+
+    .contenedorNota .tituloNota{
+    padding-right: 10px !important;
+    }
+    }

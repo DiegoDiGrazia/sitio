@@ -52,6 +52,10 @@
         width: 300px;
         margin-left: 20px;
       }
+      
+      .justify-content-center{
+        width: 100% !important;
+      }
 
       .contenedorMiniNotaGenerica{
         margin-left: 20px !important;
@@ -81,6 +85,9 @@
       .moduloPortada .flex-md-row .contenedorMiniNotaGenerica{
         margin-left:30px   !important;
         width: 340px
+      }
+      .moduloPortada {
+        width: 100% !important;
       }
 
       /* Seccion lo mas visto (Negro) */
@@ -133,6 +140,64 @@
       }
       .contenedorNota .laMasLeida{
         display: none;
+      }
+
+      /* SECCION NAVBAR */
+      .navbarCategorias{
+        display: none !important;
+      }
+      .navbar-expand-lg img{
+        width: 93px !important;
+
+      }
+      .navbar {
+        width: auto;
+      }
+      .navbar-expand-lg .container-fluid{
+        width: auto;
+        margin: 0px;
+        padding: 0px;
+      }
+      .navbar-brand{
+        margin-left: 5px !important;
+      }
+      .nombreUbicacion{
+        font-size: 16px;
+        padding: 0px;
+        margin-top: 5px;
+      }
+      .navbar-toggler {
+        position: absolute;
+        right: 0;
+        margin-right: 20px;
+      }
+      .footer{
+        width: 100% !important;
+      }
+
+      .navbar .collapsed{
+        margin-left: 50px;
+        border: none !important;
+      }
+      .modal-content .modal-header{
+        background-color: #131313;
+        border: none;
+      }
+      .modal-content {
+        background-color: #131313 !important;
+      }
+      .modal li{
+        font-size: 30px;
+        color: white;
+        margin-bottom: 10px;
+      }
+      .modal ul{
+        list-style: none;
+        margin-top: 10px;
+      }
+      .modal .buscador{
+        margin-left: 20px;
+        margin-bottom: 20px;
       }
 
   }
