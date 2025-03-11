@@ -6,10 +6,11 @@ const datosHome = createSlice({
   initialState: {
     datoPais: {},
     datoProvincia: {},
-    notasHome: {pais: [], provincia: [], suProvincia: [], municipio: []},
+    notasHome: {pais: [], provincia: [], suProvincia: [], municipio: [], categoria: []},
     datoGeo: {},
     notasMostradas: [],
     mostrarUbicacion: false,
+
 
   },
   reducers: {
@@ -30,6 +31,9 @@ const datosHome = createSlice({
     },
     setNotasSuProvincia: (state, action) =>{
       state.notasHome.suProvincia = state.notasHome.suProvincia.concat(action.payload);
+    },
+    setNotasPorCategoria: (state, action) =>{
+      state.notasHome.categoria = action.payload;
     },
     setDatoGeo: (state, action) => {
       state.datoGeo = action.payload;
@@ -61,5 +65,6 @@ const datosHome = createSlice({
 
 // Exportar las acciones y el reducer
 export const { setDatoPais, setDatoProvincia,  setDatoGeo, 
-  setNotasMunicipio, setNotasPais, setNotasProvincia, setNotasSuProvincia, setNotasMostradas, eliminarRepetidos, setMostrarUbicacion } = datosHome.actions;
+  setNotasMunicipio, setNotasPais, setNotasProvincia, setNotasSuProvincia,
+   setNotasMostradas, eliminarRepetidos, setMostrarUbicacion, setNotasPorCategoria } = datosHome.actions;
 export default datosHome.reducer;

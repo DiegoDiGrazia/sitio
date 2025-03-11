@@ -33,15 +33,6 @@ return (
       </div>
         </Link>
 
-      <div className="row mt-3 filaDatosNota" style={{ border: border ? undefined : "none", marginLeft: "0px", marginTop: "auto" }}>
-        <div className="col-auto p-0">
-          <p className="inicialesConColores ml-3">CBA</p>
-        </div>
-        <div className="col-10 p-0">
-          <p style={{ color: "black", fontWeight: "bold", marginBottom: "0px", marginLeft: "10px" }}>{nota.cliente}</p>
-          <p style={{ color: "#BABABA", marginLeft: "10px" }}>{formatearFecha(nota.f_pub)}</p>
-        </div>
-      </div>
     </div>
   </>
 );

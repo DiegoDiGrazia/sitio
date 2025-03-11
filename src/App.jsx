@@ -14,6 +14,8 @@ function App() {
         <Route path="/" element={<Sitio />} />
         <Route path="/notaPreview/:id?" element={<NotaPrevisualizacion />} />
         <Route path="/nota/:id?" element={<Nota />} />
+        <Route path="/categoria/:categoria?" element={<Sitio homeCategoria = {true} />} />
+
         <Route path="/:pais?/:provincia?/:municipio?" element={<Sitio />} />
         <Route path="/:pais?/:provincia?/:municipio?" element={<Sitio />} />
         <Route path="/:pais?/:provincia?/:municipio?" element={<Sitio />} />

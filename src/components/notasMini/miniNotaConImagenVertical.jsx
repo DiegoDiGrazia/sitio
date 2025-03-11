@@ -4,6 +4,7 @@ import Categoria from "../common/Categoria";
 import { useSelector } from 'react-redux';
 import { formatearFecha } from "../common/formats";
 import { Link } from "react-router-dom";
+import FirmaNotas from "../common/firmaNotas";
 
 function MiniNotaConImagenVertical({border, nota}) {
     if(!nota){
@@ -33,16 +34,7 @@ const iso_3 = useSelector((state) => state.datosHome.datoPais.iso_3);
                             </Link></p>
                 </div>
             </div>
-            <div className="row mt-3 filaDatosNota" style={{ border: border ? undefined : "none" }}>
-                <div className="col-2 p-0">
-                    <p className="inicialesConColores">{iso_3}</p>
-                </div>
-                <div className="col-10 p-0" >
-                    <p className="lugarDeLaNota">{nota.cliente}</p>
-                    <p className = "p-0 m-0"  style={{color: "#BABABA" , marginLeft: "10px"}}>{formatearFecha(nota.f_pub)}</p>
-
-                </div>
-
+            <div className="row mt-3 filaDatosNota mb-4" style={{ border: border ? undefined : "none" }}>
             </div>
     </>
 

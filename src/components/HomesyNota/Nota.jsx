@@ -9,6 +9,7 @@ import "./nota.css"
 import BannerNegroVerticalMasLeidas from '../notasMini/BannerNegroVerticalMasLeidas.jsx';
 import { formatearFecha } from '../common/formats.js';
 import React from 'react';
+import FirmaNotas from '../common/firmaNotas.jsx';
 
 function Nota({ pais }) {
   const [TOKEN, setTOKEN] = useState("");
@@ -109,17 +110,8 @@ function Nota({ pais }) {
           <div className='contenidoNotaDanger' dangerouslySetInnerHTML={{ __html: nota.content }} />
 
           {/* SECTOR AUTOR */}
-          <div className="row mt-3 filaDatosNota">
-            <div className="col-auto p-0">
-                <img src='/images/AvatarEditor.png' className='imagenAvatarNota'></img>
-            </div>
-            <div className="col-8 p-0" >
-                <p style={{color: "black", fontWeight: "bold", marginBottom: "0px", marginLeft: "10px"}}>{nota.authors ? nota.authors : nota.cliente}</p>
-                <p style={{color: "#BABABA" , marginLeft: "10px"}}>{formatearFecha(nota.f_pub)}</p>
-
-            </div>
-        </div>
-        {/* FIN SECTOR AUTOR */}
+          <FirmaNotas border = {false} nombreCLiente = {nota.cliente} f_pub = {formatearFecha(nota.f_pub)} iso_id={nota.iso_id} />
+          {/* FIN SECTOR AUTOR */}
 
           </div>
           <div className='col-auto'> 

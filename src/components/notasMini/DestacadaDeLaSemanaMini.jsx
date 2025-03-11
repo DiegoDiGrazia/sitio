@@ -33,16 +33,6 @@ function DestacadaDeLaSemanaMini({nota}) {
                                 {nota.titulo}
                             </Link></p>
                         <p style={{fontSize: "16px", fontWeight: "", marginTop: "10px", color: "#FFFFFF"}}>{nota.copete}</p>
-                    <div className="row datosCliente">
-                        <div className="col-2 p-0">
-                            <p className="inicialesConColores" style={{marginLeft: "10px"}}>CBA</p>
-                        </div>
-                        <div className="col-10 mt-auto" >
-                            <p className="lugarDeLaNota" style={{color: "white"}}>{nota.cliente}</p>
-                            <p style={{color: "white"}}>{formatearFecha(nota.f_pub)}</p>
-
-                        </div>
-                    </div>
                 </div>
             </div>
 

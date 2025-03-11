@@ -55,3 +55,7 @@
     box-orient: vertical; /* Propiedad estándar */
     overflow: hidden;
   }
+
+  .contenedorMiniNotaGenerica{
+    margin-bottom: 50px;
+  }

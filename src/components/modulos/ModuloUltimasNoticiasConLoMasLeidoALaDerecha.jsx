@@ -1,11 +1,10 @@
 import React from "react";
-
-import BotonVerMas from '../common/BotonVerMas';
 import NotaMiniGenerica from '../notasMini/notaMiniGenerica';
-
 import BannerNegroVerticalMasLeidas from '../notasMini/BannerNegroVerticalMasLeidas';
-import { useDispatch } from 'react-redux';
+import { useParams } from "react-router-dom";
+
 function ModuloUltimasNoticiasConLoMasLeidoALaDerecha({notas, notasScrollInfinito} ) {
+  const { categoria } = useParams();
 
     const renderRows = () => {
         const rows = [];
@@ -42,8 +41,7 @@ function ModuloUltimasNoticiasConLoMasLeidoALaDerecha({notas, notasScrollInfinit
         <div className='row moduloPortada hiperlocales mt-4' style={{backgroundColor: "#ffffff", width: "1205px" }}>
             <div className='row' style={{paddingTop: "0px"}}>
                 <div className='col-9' style={{marginRight: "32px"}}>
-                <p className= "ultimasNoticias"style={{fontSize: "36px", color: "black", fontWeight: "bold" }}>Ultimas noticias en <span style={{color: "#DD2590"}}>{notas[0].cliente}</span></p>
-                
+                {!categoria && <p className= "ultimasNoticias"style={{fontSize: "36px", color: "black", fontWeight: "bold" }}>Últimas noticias en <span style={{color: "#DD2590"}}>{notas[0].cliente}</span></p>}
                 </div>
                 {/* <div className='col' style={{paddingTop: "10px", marginLeft: "42px"}}>
 

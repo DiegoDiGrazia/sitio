@@ -16,7 +16,7 @@ function ModuloUltimasNoticiasConDestacadaDeLaSemana( {notasSuProvincia}) {
         <div className='row moduloPortada mt-4' style={{backgroundColor: "#ffffff", width: "1205px" }}>
             <div className='row' style={{paddingTop: "0px"}}>
                 <div className='col-10' style={{marginRight: "32px"}}>
-                    <p className = "ultimasNoticias"style={{fontSize: "36px", color: "black", fontWeight: "bold" }}>Ultimas noticias en  <span style={{color: "orange"}}>{notasSuProvincia[0].cliente}</span></p>
+                    <p className = "ultimasNoticias"style={{fontSize: "36px", color: "black", fontWeight: "bold" }}>Últimas noticias en  <span style={{color: "orange"}}>{notasSuProvincia[0].cliente}</span></p>
                 </div>
                 {/* <div className='col' style={{paddingTop: "10px", marginLeft: "42px"}}>
 

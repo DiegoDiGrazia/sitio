@@ -10,15 +10,20 @@ import HomeProvincia from './HomesyNota/HomeProvincia';
 import HomeMunicipio from './HomesyNota/HomeMunicipio';
 import "./HomesyNota/mobileHome.css"
 import React from 'react'; // Asegúrate de que esté presente
+import CategoriasHome from './HomesyNota/CategoriaHome';
 
-function Sitio() {
+function Sitio(homeCategoria) {
   const [TOKEN, setTOKEN] = useState("");
   const [tokenLoaded, setTokenLoaded] = useState(false)
   const { pais, provincia, municipio } = useParams();
+  const { categoria } = useParams();
   const [provinciasDeUnPais, setProvinciasDeUnPais] = useState([]);
   const dispatch = useDispatch();
   const SeleccionarUbicacion = useSelector((state) => state.datosHome.mostrarUbicacion);
 
+  useEffect(() => {
+    console.log("Cambiando de categoría:", categoria);
+  }, [categoria]); // Se ejecuta cada vez que cambia la categoría
  
   useEffect(() => {
     if (!tokenLoaded) {
@@ -65,14 +70,20 @@ function Sitio() {
 
 
 
-  return (
+return (
     <>
-        {municipio && <HomeMunicipio pais = {pais} provincia = {provincia} municipio = {municipio} />}
-        {provincia && !municipio && <HomeProvincia pais = {pais} provincia = {provincia} />}
-        {(pais && !provincia && !municipio) && <HomePais pais = {pais}/>}
-        {(!pais && !provincia && !municipio) && <HomePais pais = {"Argentina"}/>}
-
-
+      {categoria ? (
+        <CategoriasHome categoria={categoria} />) :
+      
+      municipio ? (
+        <HomeMunicipio pais={pais} provincia={provincia} municipio={municipio} />
+      ) : provincia ? (
+        <HomeProvincia pais={pais} provincia={provincia} />
+      ) : pais ? (
+        <HomePais pais={pais} />
+      ) : (
+        <HomePais pais="Argentina" />
+      )}
     </>
   );
 }

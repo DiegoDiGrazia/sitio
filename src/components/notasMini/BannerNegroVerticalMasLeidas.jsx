@@ -16,7 +16,7 @@ function BannerNegroVerticalMasLeidas({notas}) {
     <>      
         <div style={{background: "black", width: "330px", marginLeft: "50px", borderRadius: "15px", padding: "30px 25px 0px 25px"}} className="laMasLeida">
             <p style={{color: "white", fontSize: "28px", fontFamily: 'Big Shoulders Text, sans-serif', fontWeight: "bold"}}>
-                LAS MAS LEIDAS EN <span style={{color: "#DD2590"}}>{notas[0].cliente}</span></p>
+                LAS MAS LEÍDAS</p>
                 {notas.map((nota, index) => (
           <div 
             key={nota.id || index} // Agregamos la key

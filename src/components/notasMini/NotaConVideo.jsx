@@ -31,17 +31,6 @@ function NotaConVideo({nota}) {
                         </Link>
                 </div>
 
-            <div className="row mt-3 filaDatosNota" style={{ border: border ? undefined : "none" }}>
-                <div className="col-2 p-0">
-                    <p className="inicialesConColores">CBA</p>
-                </div>
-                <div className="col-10 p-0" >
-                    <p style={{color: "#ffffff", fontWeight: "bold", marginBottom: "0px", marginLeft: "10px"}}>{nota.cliente}</p>
-                    <p style={{color: "#BABABA" , marginLeft: "10px"}}>{formatearFecha(nota.f_pub)}</p>
-
-                </div>
-
-            </div>
             </div>
     </>
 

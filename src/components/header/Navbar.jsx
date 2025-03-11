@@ -10,6 +10,8 @@ function Navbar() {
   const dispatch = useDispatch();
   const SeleccionarUbicacion = useSelector((state) => state.datosHome.mostrarUbicacion);
   const { pais, provincia, municipio } = useParams();
+  const { categoria } = useParams();
+
   const actualHomeUbicacion = municipio || provincia || pais;
   
   const [showModal, setShowModal] = useState(false);
@@ -31,7 +33,8 @@ function Navbar() {
             <img src="/images/logoNoticiasd.png" alt="" />
           </a>
           <p className="nombreUbicacion">
-            {actualHomeUbicacion ? actualHomeUbicacion.replace(/-/g, " ").toUpperCase() : "Argentina"}
+            {actualHomeUbicacion ? actualHomeUbicacion.replace(/-/g, " ").toUpperCase() : 
+            categoria ? categoria.toUpperCase() : "Argentina"}
           </p>
 
           {/* Botón hamburguesa con evento onClick */}
@@ -84,16 +87,6 @@ function Navbar() {
                   placeholder="    Buscar noticias, palabras clave..."
                   aria-label="Search"
                 />
-                <ul>
-                  <li>Politica</li>
-                  <li>Sociedad</li>
-                  <li>Economia</li>
-                  <li>Ciencia</li>
-                  <li>Salud</li>
-                  <li>Cultura</li>
-                  <li>Deportes</li>
-                  <li>Tendencias</li>
-                </ul>
             </div>
           </div>
         </div>
