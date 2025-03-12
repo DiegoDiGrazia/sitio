@@ -26,6 +26,23 @@
     border: 1px solid #667085c5; /* Nuevo color del borde cuando el campo tiene focus */
     outline: 1px solid #667085c5;
 }
+#navbarSupportedContent{
+    justify-content: flex-end;
+
+}	
+.resultados-busqueda {
+    position: absolute;
+    top: 100%; /* Justo debajo del buscador */
+    left: 0;
+    right: 0;
+    background-color: white; /* Fondo blanco para los resultados */
+    z-index: 999; /* Debajo del buscador pero por encima de otros elementos */
+    border: 1px solid #ccc; /* Borde para los resultados */
+    padding: 10px; /* Espaciado interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para los resultados */
+    max-height: 400px; /* Ajusta según sea necesario */
+    overflow-y: auto; /* Permite el desplazamiento si hay muchos resultados */
+  }
 
 .navbar{
     height: 84px;
