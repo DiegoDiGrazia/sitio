@@ -13,14 +13,15 @@ function ModuloPortadaConCarrusel({notasCarrusel, notasDebajoCarrusel,notasDebaj
 
   return (
     <>
-        <div className='row moduloPortada mt-4'>
+        <div className='row moduloPortada mt-4 g-0'>
             <div className='col-auto'>
               <CarruselNotas notas={notasCarrusel.slice(0, 2)}  />
             </div>
-            <div className='col-auto' style={{marginLeft: "40px"}}>
-              <MiniNotaConImagenVertical border={true} nota={notasDerechaCarrusel[0]}/>
-              <MiniNotaConImagenVertical border={true } nota={notasDerechaCarrusel[1]}/>
-              <MiniNotaConImagenVertical nota={notasDerechaCarrusel[2]}/>
+            <div className='col-auto notasMobileDerecha' style={{marginLeft: "30px"}}>
+              <NotaMiniGenerica width={"300px"} height={"180px"} tieneContenido={false} nota={notasDerechaCarrusel[0]}/>
+              <NotaMiniGenerica width={"300px"} height={"180px"} tieneContenido={false} nota={notasDerechaCarrusel[1]} />
+              <NotaMiniGenerica width={"300px"} height={"180px"} tieneContenido={false} nota={notasDerechaCarrusel[2]} />
+
             </div>
         </div>
 

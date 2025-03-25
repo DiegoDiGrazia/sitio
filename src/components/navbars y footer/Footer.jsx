@@ -41,7 +41,7 @@ const Footer = () => {
     <footer className={`footer ${isVisible ? 'visible' : ''} ${isExpanded ? 'expanded' : ''}`}>
       <div className="row">
         <div className="col-6">
-            <img  src='/images/logoNoticiasDBlanco.png'/>
+            <img  src='/images/LogoNdBlancoNaranja.png' style={{width: "150px"}}/>
         </div>
         <div className="col-6 align-items-center">
             <button 
@@ -56,7 +56,7 @@ const Footer = () => {
         
         {isExpanded && (
           <div className="row expanded-content mt-3">
-            <div className='col-6'>   
+            <div className='col-12 col-md-6'>   
                 <h4>Contenido Hiperlocal sin intermediar
                 <Button
                   sx={{
@@ -84,7 +84,7 @@ const Footer = () => {
                 </Button>
                 </h4>
                 <div className='row'>
-                  <div className='col-3'> 
+                  <div className='col-6 col-md-3'> 
                     <ul>
                     <li className="nav-item">
                       <Link className="nav-link" to="/categoria/politica">Política</Link>
@@ -98,7 +98,7 @@ const Footer = () => {
                   
                     </ul>
                   </div>
-                  <div className='col-3'> 
+                  <div className='col-6 col-md-3'> 
                     <ul>
                     <li className="nav-item">
                       <Link className="nav-link" to="/categoria/cultura-y-educacion">Cultura y educación</Link>
@@ -111,7 +111,7 @@ const Footer = () => {
                     </li>
                     </ul>
                   </div>
-                  <div className='col-3'> 
+                  <div className='col-6 col-md-3'> 
                     <ul>
                     <li className="nav-item">
                       <Link className="nav-link" to="/categoria/deportes">Deportes</Link>
@@ -124,7 +124,7 @@ const Footer = () => {
                     </li>
                     </ul>
                   </div>
-                  <div className='col-3'> 
+                  <div className='col-6 col-md-3'> 
                     <ul>
                     <li className="nav-item">
                       <Link className="nav-link" to="/categoria/medioambiente">Medioambiente</Link>

@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import React from 'react';
 import "./Navbar.css"
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -101,7 +102,7 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            <img src="/images/logoNoticiasd.png" alt="" />
+            <img src="/images/LogoNdNegroNaranga.png" alt="" style={{width: "180px"}}/>
           </a>
           <p className="nombreUbicacion">
             {actualHomeUbicacion ? actualHomeUbicacion.replace(/-/g, " ").toUpperCase() : 
@@ -123,7 +124,7 @@ function Navbar() {
                 <input
                   className="buscador"
                   type="search"
-                  placeholder="Buscar noticias, palabras clave..."
+                  placeholder="   Buscar noticias, palabras clave..."
                   aria-label="Search"
                   value={searchTerm}
                   onChange={handleSearchChange}
@@ -135,11 +136,20 @@ function Navbar() {
                 {/* Mostrar noticias solo si el buscador está activo */}
                 {isSearchActive && (
                   <div className="resultados-busqueda">
-                    <h3>Resultados de búsqueda:</h3>
                     {noticias.length > 0 ? (
                       <ul>
                         {noticias.map((nota, index) => (
-                          <li key={index}>{nota.titulo}</li> // Asumiendo que las noticias tienen un campo "titulo"
+                          
+                          <li key={index} className="link-noticia">
+                            <Link 
+                              to={`/nota/${nota.id_noti }`} 
+                              target="_blank" 
+                              style={{ textDecoration: "none", color: "inherit" }}
+                              onMouseDown={(e) => e.preventDefault()}
+                            >
+                              {nota.titulo}
+                            </Link>
+                          </li> // Asumiendo que las noticias tienen un campo "titulo"
                         ))}
                       </ul>
                     ) : (
@@ -149,11 +159,12 @@ function Navbar() {
                 )}
               </form>
             </div>
-  
-            <button className="btn" type="button" onClick={() => dispatch(setMostrarUbicacion(!SeleccionarUbicacion))}>
-              Elegir ubicación
-            </button>
           </div>
+  
+          <button className="btn" type="button" onClick={() => dispatch(setMostrarUbicacion(!SeleccionarUbicacion))}>
+            <p>Elegir ubicación</p>
+            <span className='mobileBuscador d-md-none'><span className="navbar-toggler-icon icono"></span></span>
+          </button>
         </div>
       </nav>
   

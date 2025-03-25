@@ -77,7 +77,7 @@ function CategoriasHome() {
             minHeight: "100vh", // La fila debe cubrir toda la altura del viewport
         }}
     >
-  <div className="col-auto p-0">
+  <div className="col-auto p-0 ">
     <ModuloPortadaConCarrusel notasCarrusel={notasPorCategoria.slice(0,2)} notasDerechaCarrusel={notasPorCategoria.slice(2)}/>
     <ModuloUltimasNoticiasConLoMasLeidoALaDerecha notas = {notasPorCategoria.slice(7)} notasScrollInfinito = {notasScrollInfinito.slice(15)}/>
 

@@ -27,13 +27,14 @@ function HomeProvincia({ pais, provincia }) {
     const notasMunicipio = useSelector((state) => state.datosHome.notasHome.municipio);
 
     const provinciaFormateada = provincia.replace(/-/g, " ");
-    console.log(provinciaFormateada);
+    console.log(provinciaFormateada, "PROVINCIA FORMATEADA");
 
     const paises = useSelector((state) => state.datosHome.datoGeo.paises);
     useEffect(() => {
       if (paises) {
         const provincias = paises.filter(paiss => paiss.nombre === pais)[0].provincias;
         const ProvinciaActual = provincias.filter(prov => prov.nombre.toLowerCase() === provinciaFormateada.toLowerCase())[0];
+        console.log(provincias, ProvinciaActual, "ADENTRO USE EFFECT SET")
         setDatoGeoProvincia(ProvinciaActual)
       }
       console.log(datoGeoProvincia, "USE EFFECT GEO")
@@ -60,9 +61,9 @@ function HomeProvincia({ pais, provincia }) {
         formData3.append("provincia", "LOCAL");
         const fetch3 = fetchNotas(formData3, setNotasSuProvincia, dispatch);
 
-        const formData4 = new FormData();
+        const formData4 = new FormData(); ///HIPERLOCALES
         formData4.append('token', 1);
-        formData4.append("municipio", "municipio de lanús");
+        formData4.append("municipio", "");
         const fetch4 = fetchNotas(formData4, setNotasMunicipio, dispatch);
   
         await Promise.all([fetch1, fetch2, fetch3, fetch4]);
@@ -90,7 +91,7 @@ function HomeProvincia({ pais, provincia }) {
 
     useEffect(() => {
       const loadMoreNotas = async () => {
-        if (isFetching) return; // Evita múltiples llamadas simultáneas
+        if (isFetching || datoGeoProvincia == "") return; // Evita múltiples llamadas simultáneas
     
         setIsFetching(true); // Indica que la petición está en curso
     
@@ -112,7 +113,7 @@ function HomeProvincia({ pais, provincia }) {
       };
     
       loadMoreNotas();
-    }, [page, pais, dispatch]);
+    }, [page, pais, dispatch, datoGeoProvincia]);
   
 
   return (

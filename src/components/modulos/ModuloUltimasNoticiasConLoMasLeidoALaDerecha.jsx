@@ -10,7 +10,7 @@ function ModuloUltimasNoticiasConLoMasLeidoALaDerecha({notas, notasScrollInfinit
         const rows = [];
         for (let i = 0; i < notasScrollInfinito.length; i += 3) {
           rows.push(
-            <div className='row' key={i}>
+            <div className='row p-0' key={i}>
               <div className="col-12 col-md-4">
                 <NotaMiniGenerica width={"338px"} height={"361px"} tieneContenido={true} fontSizeContenido={"18px"} fontSizeTitulo={"18px"} nota={notasScrollInfinito[i]} />
               </div>
@@ -39,16 +39,16 @@ function ModuloUltimasNoticiasConLoMasLeidoALaDerecha({notas, notasScrollInfinit
   return (
     <>
         <div className='row moduloPortada hiperlocales mt-4' style={{backgroundColor: "#ffffff", width: "1205px" }}>
-            <div className='row' style={{paddingTop: "0px"}}>
+            <div className='row p-0' style={{paddingTop: "0px"}}>
                 <div className='col-9' style={{marginRight: "32px"}}>
-                {!categoria && <p className= "ultimasNoticias"style={{fontSize: "36px", color: "black", fontWeight: "bold" }}>Últimas noticias en <span style={{color: "#DD2590"}}>{notas[0].cliente}</span></p>}
+                {/* {!categoria && <p className= "ultimasNoticias"style={{fontSize: "36px", color: "black", fontWeight: "bold" }}>Últimas noticias en <span style={{color: "#DD2590"}}>{notas[0].cliente}</span></p>} */}
                 </div>
                 {/* <div className='col' style={{paddingTop: "10px", marginLeft: "42px"}}>
 
                     <BotonVerMas/>       
-                </div>      */}
+                </div>      */} 
             </div>
-            <div className="row" style={{ borderBottom: "1px solid #bababa" }}>
+            <div className="row p-0" style={{ borderBottom: "1px solid #bababa" }}>
                 <div className="col-12 col-md-4">
                     <NotaMiniGenerica width={"338px"} height={"361px"} tieneContenido={true} nota={notas[5]} />
                 </div>
@@ -61,7 +61,7 @@ function ModuloUltimasNoticiasConLoMasLeidoALaDerecha({notas, notasScrollInfinit
             </div>
             <div className='row ocultarNotaMini' style={{ marginTop:"40px", paddingBottom:"30px"}}>
                 <NotaMiniGenerica width={"720px"} height={"316px"} tieneContenido={true} fontSizeContenido={"16px"} fontSizeTitulo={"30px"} nota= {notas[8]}/>
-                <BannerNegroVerticalMasLeidas notas = {notas.slice(9 ,13)}/>
+                <BannerNegroVerticalMasLeidas notas = {notas.slice(9 ,13)} notasRelleno ={notas} />
             </div>
 
             {renderRows()}

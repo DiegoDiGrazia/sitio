@@ -29,12 +29,15 @@ function HomeMunicipio({ pais, provincia, municipio }) {
     const paises = useSelector((state) => state.datosHome.datoGeo.paises);
     useEffect(() => {
       if (paises) {
-        const provincias = paises.filter(paiss => paiss.nombre === pais)[0].provincias;
-        const ProvinciaActual = provincias.filter(prov => prov.nombre.toLowerCase() === provinciaFormateada.toLowerCase())[0];
-        setDatoGeoProvincia(ProvinciaActual)
+          const paisEncontrado = paises.find(paiss => paiss.nombre === pais);
+          if (paisEncontrado) {
+              const provincias = paisEncontrado.provincias || [];
+              const ProvinciaActual = provincias.find(prov => prov.nombre.toLowerCase() === provinciaFormateada.toLowerCase());
+              setDatoGeoProvincia(ProvinciaActual);
+          }
       }
-      console.log(datoGeoProvincia, "USE EFFECT GEO")
-    }, [paises, datoGeoProvincia]);
+      console.log(datoGeoProvincia, "USE EFFECT GEO");
+  }, [paises, provinciaFormateada]);
 
 
     const [notasScrollInfinito, setNotasScrollInfinito] = useState([]);
@@ -59,7 +62,7 @@ function HomeMunicipio({ pais, provincia, municipio }) {
 
         const formData4 = new FormData();
         formData4.append('token', 1);
-        formData4.append("municipio", municipio);
+        formData4.append("municipio", municipio.replace(/-/g, " "));
         const fetch4 = fetchNotas(formData4, setNotasMunicipio, dispatch);
   
         await Promise.all([fetch1, fetch2, fetch3, fetch4]); ///despues de terminar, elimino los repetidos

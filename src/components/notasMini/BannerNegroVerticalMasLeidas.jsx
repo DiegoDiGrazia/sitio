@@ -3,12 +3,13 @@ import "./MiniNotaConImagenVertical.css"
 import Categoria from "../common/Categoria";
 import { Link } from "react-router-dom";
 
-function BannerNegroVerticalMasLeidas({notas}) {
+function BannerNegroVerticalMasLeidas({notas, notasRelleno}) {
   if(!notas || !notas[0]){
     return(
         <div></div>
     )
   }
+  const notasCompletas = notas.concat(notasRelleno).slice(0, 4);
 
 
 
@@ -17,7 +18,7 @@ function BannerNegroVerticalMasLeidas({notas}) {
         <div style={{background: "black", width: "330px", marginLeft: "50px", borderRadius: "15px", padding: "30px 25px 0px 25px"}} className="laMasLeida">
             <p style={{color: "white", fontSize: "28px", fontFamily: 'Big Shoulders Text, sans-serif', fontWeight: "bold"}}>
                 LAS MAS LEÍDAS</p>
-                {notas.map((nota, index) => (
+                {notasCompletas.map((nota, index) => (
           <div 
             key={nota.id || index} // Agregamos la key
             className="row"  

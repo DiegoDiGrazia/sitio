@@ -44,9 +44,9 @@ function HomePais({ pais }) {
         formData3.append("provincia", "LOCAL");
         const fetch3 = fetchNotas(formData3, setNotasSuProvincia, dispatch);
 
-        const formData4 = new FormData();
+        const formData4 = new FormData(); /// ACA AGREGAR LO DEL MUNI ALL
         formData4.append('token', 1);
-        formData4.append("municipio", "municipio de lanús");
+        formData4.append("municipio", "");
         const fetch4 = fetchNotas(formData4, setNotasMunicipio, dispatch);
   
         await Promise.all([fetch1, fetch2, fetch3, fetch4]);
@@ -70,16 +70,25 @@ function HomePais({ pais }) {
       return () => window.removeEventListener('scroll', handleScroll);
     }, []);
   
+    const [isFetching, setIsFetching] = useState(false); // Nuevo estado
+
     useEffect(() => {
       const loadMoreNotas = async () => {
+        if (isFetching) return; // Evita múltiples llamadas simultáneas
+        setIsFetching(true); // Indica que la petición está en curso
         const formData = new FormData();
         formData.append('token', 1);
         formData.append("pais", pais);
         formData.append("limite", "9");
         formData.append("desde_limite", page);
-        const response = await fetchNotas(formData, "", dispatch);
-        setNotasScrollInfinito(prevNotas => [...prevNotas, ...response.data.item.notas]);
-        dispatch(eliminarRepetidos());
+                try {
+                  const response = await fetchNotas(formData, "", dispatch);
+                  setNotasScrollInfinito(prevNotas => [...prevNotas, ...response.data.item.notas]);
+                } catch (error) {
+                  console.error("Error cargando más notas:", error);
+                } finally {
+                  setIsFetching(false); // Libera el bloqueo cuando termina la petición
+                }
 
       };
   

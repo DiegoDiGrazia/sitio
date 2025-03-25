@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { formatearFecha } from "../common/formats";
 import { Link } from "react-router-dom";
 
-function NotaMiniGenerica({width,height, tieneContenido,border, marginTop, fontSizeContenido, fontSizeTitulo, nota}) {
+function NotaMiniGenerica({width,height, tieneContenido,borderBottom, marginTop, fontSizeContenido, fontSizeTitulo, nota, paddingBottom}) {
   if(!nota){
     return(
         <div>cargando</div>
@@ -15,7 +15,7 @@ function NotaMiniGenerica({width,height, tieneContenido,border, marginTop, fontS
 
 return (
   <>
-    <div style={{ width, marginLeft: "50px", padding: "0px", marginTop, display: "flex", flexDirection: "column" }} className="contenedorMiniNotaGenerica">
+    <div className="contenedorMiniNotaGenerica" style={{ width, marginLeft: "50px", padding: "0px", marginTop, display: "flex", flexDirection: "column", borderBottom, paddingBottom }} >
           <Link 
             to={`/nota/${nota.id_noti }`} 
             target="_blank" 

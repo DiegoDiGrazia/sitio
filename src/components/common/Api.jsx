@@ -37,7 +37,7 @@ export const fetchNotas = async (formData, action, dispatch) => {
     console.error('Error en login:', error);
   }
 };
-export const obtenerNotaDelTipo = (tipoNotas) => {
+export const obtenerNotaDelTipo = (tipoNotas) => {  
   const notas = useSelector((state) => state.datosHome.notasHome[tipoNotas]);
   const notasMostradas = useSelector((state) => state.datosHome.notasMostradas);
   const dispatch = useDispatch();

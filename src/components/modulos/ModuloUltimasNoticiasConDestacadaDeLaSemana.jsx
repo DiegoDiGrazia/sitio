@@ -23,7 +23,7 @@ function ModuloUltimasNoticiasConDestacadaDeLaSemana( {notasSuProvincia}) {
                     <BotonVerMas/>       
                 </div>      */}
             </div>
-            <div className="row" style={{ borderBottom: "1px solid #bababa" }}>
+            <div className="row p-0" style={{ borderBottom: "1px solid #bababa" }}>
                 <div className="col-12 col-md-4">
                     <NotaMiniGenerica width={"338px"} height={"361px"} tieneContenido={true} nota={notasSuProvincia[0]} />
                 </div>
@@ -34,12 +34,12 @@ function ModuloUltimasNoticiasConDestacadaDeLaSemana( {notasSuProvincia}) {
                     <NotaMiniGenerica width={"338px"} height={"361px"} tieneContenido={true} nota={notasSuProvincia[2]} />
                 </div>
             </div>
-            <div className='row d-flex flex-column flex-md-row' 
+            <div className='row d-flex flex-column flex-md-row p-0' 
                 style={{ borderBottom: "1px solid #bababa", marginTop: "40px", paddingBottom: "30px" }}>
                 <DestacadaDeLaSemanaMini width={"338px"} height={"361px"} nota={notasSuProvincia[7]} />
                 <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota={notasSuProvincia[3]} />
             </div>
-            <div className='row' style={{ marginTop:"40px"}}>
+            <div className='row p-0' style={{ marginTop:"40px"}}>
                 <div className="col-12 col-md-4">
                     <NotaMiniGenerica width={"338px"} height={"180px"} tieneContenido={false} nota = {notasSuProvincia[4]}/>
                 </div>

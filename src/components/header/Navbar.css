@@ -14,6 +14,9 @@
 
 }
 
+.navbar a{
+    margin-bottom: 0px;
+}
 .buscador::placeholder {
     font-size: 14px; 
 }
@@ -40,15 +43,31 @@
     border: 1px solid #ccc; /* Borde para los resultados */
     padding: 10px; /* Espaciado interno */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para los resultados */
-    max-height: 400px; /* Ajusta según sea necesario */
+    max-height: 300px; /* Ajusta según sea necesario */
     overflow-y: auto; /* Permite el desplazamiento si hay muchos resultados */
+    border-radius: 0px 0px 10px 10px;
   }
+
+  .resultados-busqueda li{
+    color: #667183;
+  }
+
+  .link-noticia {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+    }
+
+    .link-noticia:hover {
+        color: #050505; /* O el color que prefieras */
+    }
 
 .navbar{
     height: 84px;
     background-color: white !important;
     border-bottom: 1px solid #d4dae4;
     padding: 0px 20px !important;
+    position: static;
 }
 .nombreUbicacion{
     font-size: 25px;
@@ -111,4 +130,5 @@
 .ocultar{
     display: none !important;
 }
+
 

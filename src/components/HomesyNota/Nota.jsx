@@ -110,7 +110,7 @@ function Nota({ pais }) {
           <div className='contenidoNotaDanger' dangerouslySetInnerHTML={{ __html: nota.content }} />
 
           {/* SECTOR AUTOR */}
-          <FirmaNotas border = {false} nombreCLiente = {nota.cliente} f_pub = {formatearFecha(nota.f_pub)} iso_id={nota.iso_id} />
+          <FirmaNotas border = {false} nombreCLiente = {nota.cliente} f_pub = {formatearFecha(nota.f_pub)} />
           {/* FIN SECTOR AUTOR */}
 
           </div>
