@@ -29,16 +29,20 @@ function HomeProvincia({ pais, provincia }) {
     const provinciaFormateada = provincia.replace(/-/g, " ");
     console.log(provinciaFormateada, "PROVINCIA FORMATEADA");
 
-    const paises = useSelector((state) => state.datosHome.datoGeo.paises);
+    const Argentina = useSelector((state) => state.datosHome.datoPais);
     useEffect(() => {
-      if (paises) {
-        const provincias = paises.filter(paiss => paiss.nombre === pais)[0].provincias;
-        const ProvinciaActual = provincias.filter(prov => prov.nombre.toLowerCase() === provinciaFormateada.toLowerCase())[0];
+      if (Object.keys(Argentina).length !== 0) {
+        const provincias = Argentina.provincias
+        console.log("provincias:", provincias, "provinciaFormateadaNombre: ", provinciaFormateada)
+        const ProvinciaActual = provincias.filter(prov => 
+          prov.iso_nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() == 
+          provinciaFormateada.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+        )[0];  ///un bardo para ignorar mayusculas
         console.log(provincias, ProvinciaActual, "ADENTRO USE EFFECT SET")
         setDatoGeoProvincia(ProvinciaActual)
       }
       console.log(datoGeoProvincia, "USE EFFECT GEO")
-    }, [paises, datoGeoProvincia]);
+    }, [Argentina, datoGeoProvincia]);
 
 
     const [notasScrollInfinito, setNotasScrollInfinito] = useState([]);
@@ -90,7 +94,8 @@ function HomeProvincia({ pais, provincia }) {
     const [isFetching, setIsFetching] = useState(false); // Nuevo estado
 
     useEffect(() => {
-      const loadMoreNotas = async () => {
+      const loadMoreNotas = async () => {       
+
         if (isFetching || datoGeoProvincia == "") return; // Evita múltiples llamadas simultáneas
     
         setIsFetching(true); // Indica que la petición está en curso
@@ -98,7 +103,7 @@ function HomeProvincia({ pais, provincia }) {
         const formData = new FormData();
         formData.append('token', 1);
         formData.append("provincia", provinciaFormateada);
-        formData.append("region", datoGeoProvincia.region);
+        // formData.append("region", datoGeoProvincia.region);
         formData.append("limite", "9");
         formData.append("desde_limite", page);
     

@@ -8,13 +8,47 @@ import React from 'react';
 import "./Navbar.css"
 import { Link } from 'react-router-dom';
 
+
+export const generarURLDeUnaNota = (nota, datoPais) => {
+    if (!nota) {
+      return "/Argentina";
+    }
+    if (!nota.cat_municipio && !nota.cat_provincia) {
+      return "Argentina";
+    }
+    if (nota.cat_provincia) {
+      
+      return `/Argentina/${nota.cat_provincia}`.replace(/ /g, "-");
+    }
+  
+    // Iterar correctamente sobre provincias y municipios
+    for (const provincia of datoPais.provincias) {
+      for (const municipio of provincia.municipios) {
+        if (municipio.cat_municipio === nota.cat_municipio) {
+          return `/Argentina/${provincia.cat_provincia}/${municipio.cat_municipio}`.replace(/ /g, "-");
+        }
+      }
+    }
+  
+    return "/Argentina";
+  };
+
+  export const eliminarSimboloDelTitulo = (titulo) => {
+    if (!titulo) return ""; // Manejo de caso vacío
+    return titulo.replace(/&#038;/g, "&"); // Eliminar caracteres no alfanuméricos
+  }
+
+
+
 function Navbar() {
   const dispatch = useDispatch();
   const SeleccionarUbicacion = useSelector((state) => state.datosHome.mostrarUbicacion);
+  const datoPais = useSelector((state) => state.datosHome.datoPais);
+
   const { pais, provincia, municipio } = useParams();
   const { categoria } = useParams();
 
-  const actualHomeUbicacion = municipio || provincia || pais;
+  const actualHomeUbicacion = municipio || provincia || pais || categoria;
   
   const [showModal, setShowModal] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,6 +59,7 @@ function Navbar() {
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(''); // Término de búsqueda después del debounce
   const [isSearchActive, setIsSearchActive] = useState(false); // Estado para verificar si el buscador está activo
 
+  const nota = useSelector(state => state.datosHome.nota)
   // Función que maneja el cambio en el input de búsqueda
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -97,17 +132,41 @@ function Navbar() {
     setIsSearchActive(false); // Desactiva la visualización de las notas si el input pierde el foco
   };
 
+  const eliminarProvinciaMunicipioRepublica = (nombre) => {
+    if (!nombre) return ""; 
+    return nombre
+      .replace(/Municipio de\s?/i, "")
+      .replace(/Republica\s?/i, "")   
+      .replace(/Provincia de\s?/i, "")
+      .replace(/ciudad-de\s?/i, "")
+      .replace(/ciudad de buenos aires\s?/i, "caba");
+  };
+
+
+
+  const SeleccionarURLLink = (actualHomeUbicacion, categoria, nota, datoPais) => {
+    console.log("Nota adentro de SeleccionarURLLink", nota)
+    if (Object.keys(nota).length !== 0){
+      return generarURLDeUnaNota(nota, datoPais)
+    }
+    return "/Argentina"
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            <img src="/images/LogoNdNegroNaranga.png" alt="" style={{width: "180px"}}/>
-          </a>
-          <p className="nombreUbicacion">
-            {actualHomeUbicacion ? actualHomeUbicacion.replace(/-/g, " ").toUpperCase() : 
-            categoria ? categoria.toUpperCase() : "Argentina"}
-          </p>
+          <Link to={SeleccionarURLLink(actualHomeUbicacion, categoria, nota, datoPais)}
+                target="_blank" 
+                style={{ textDecoration: "none", color: "inherit" }}
+                onMouseDown={(e) => e.preventDefault()}>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <img src="/images/LogoNdNegroNaranga.png" alt="" style={{ width: "180px" }} />
+                <p className="nombreUbicacion d-block text-truncate" style={{ marginLeft: "10px" }}>
+                  {eliminarProvinciaMunicipioRepublica((actualHomeUbicacion || nota.cat_municipio || nota.cat_provincia || "Argentina")).toUpperCase().replace(/-/g, " ")}
+                </p>
+              </div>
+          </Link>
   
           <button
             className="navbar-toggler ml-auto"

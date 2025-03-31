@@ -6,9 +6,10 @@ import { formatearFecha } from "../common/formats";
 import { Link } from "react-router-dom";
 
 function NotaMiniGenerica({width,height, tieneContenido,borderBottom, marginTop, fontSizeContenido, fontSizeTitulo, nota, paddingBottom}) {
+  
   if(!nota){
     return(
-        <div>cargando</div>
+        <div className="cargando" style={{width, height, marginBottom: "50px", borderRadius: "10px", marginTop}}></div>
     )
 }
 

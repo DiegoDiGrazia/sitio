@@ -10,19 +10,27 @@ import BannerNegroVerticalMasLeidas from '../notasMini/BannerNegroVerticalMasLei
 import { formatearFecha } from '../common/formats.js';
 import React from 'react';
 import FirmaNotas from '../common/firmaNotas.jsx';
+import { escapeHTML } from '../common/formats.js';
+import { replaceSpecialQuotes } from '../common/formats.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { setDatoNota } from '../../redux/datosHome.js'
+import he from 'he';
 
 function Nota({ pais }) {
   const [TOKEN, setTOKEN] = useState("");
   const [tokenLoaded, setTokenLoaded] = useState(false)
   const { id } = useParams();
-  const [nota, setNota] = useState("")
+
+  const nota = useSelector(state => state.datosHome.nota)
   const [notaABM, setNotaABM] = useState("")
   const [notasBanner, setNotasBanner] = useState("")
-
+  const dispatch = useDispatch()
 
 
  
   useEffect(() => {
+
+
     if (!tokenLoaded) {
         axios.post("https://builder.ntcias.de/public/index.php", {}, {
             headers: { 'Content-Type': 'multipart/form-data' }
@@ -39,7 +47,7 @@ function Nota({ pais }) {
         .catch((error) => {
             console.error('Error en login:', error);
         });
-    } else if(!nota){
+    } else if(nota && Object.keys(nota).length === 0){
         // Crear el FormData para enviar el token
         const formData = new FormData();
         formData.append('token', TOKEN);
@@ -48,11 +56,10 @@ function Nota({ pais }) {
         axios.post("https://panel.serviciosd.com/app_obtener_noticia", formData, { 
             headers: { 'Content-Type': 'multipart/form-data' },
         })
+
         .then((response) => {
             if (response) {
-              console.log(response)
-              setNota(response.data.item[0])
-              console.log(notasBanner, "notas banner")
+              dispatch(setDatoNota(response.data.item[0]))
             } else {
                 console.error('Error en obtener geo:', response.data.message);
             }
@@ -91,23 +98,32 @@ function Nota({ pais }) {
 }, [TOKEN, tokenLoaded, nota]);
 
   if(!nota){
-    return <div>cargando</div>
+    return <div className='Cargando'></div>
   }
+
+  const fixQuotes = (html) => {
+    if (!html) return "";
+    return html.replace(/<p[^>]*>(.*?)<\/p>/g, (match, content) => {
+      // Reemplaza los "?" solo dentro del contenido de <p>
+      const fixedContent = content.replace(/\?/g, "'");
+      return `<p>${fixedContent}</p>`;
+    });
+  };
 
   return (
     <>
     <PublicidadHorizontal/>
-    <Header/>
+    <Header cliente = {nota.cliente}/>
     
-    <div className='row contenedorNota'>
+    <div className='row g-0 contenedorNota'>
       <div className='col-auto '>
         <div className='row justify-content-center mt-4'>
           <div className='col-12 col-md-6'> 
-          <h1 className='tituloNota'>{nota.titulo}</h1>
+          <h1 className='tituloNota'>{nota?.titulo ? he.decode(nota.titulo) : "Título no disponible"}</h1>
           <h2 className='copete'>{nota.copete} </h2>
           <img src={nota.imagen}></img>
 
-          <div className='contenidoNotaDanger' dangerouslySetInnerHTML={{ __html: nota.content }} />
+          <div className='contenidoNotaDanger' dangerouslySetInnerHTML={{ __html: fixQuotes(nota.content) }} />
 
           {/* SECTOR AUTOR */}
           <FirmaNotas border = {false} nombreCLiente = {nota.cliente} f_pub = {formatearFecha(nota.f_pub)} />

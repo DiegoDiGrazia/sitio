@@ -143,25 +143,38 @@
 
       /* Seccion nota */
       .contenedorNota .justify-content-center{
-        width: auto !important;
+        width: 100% !important;
         padding: 0px !important;
-        justify-content: start !important;
 
       }
+
       .tituloNota{
         width: 340px !important;
         padding: 0px !important;
       }
+
+      .contenidoNotaDanger{
+        width: 100% !important;
+      }
       .copete{
         width: 340px !important;
         padding: 0px !important;
+        font-size: 18px !important;
       }
       .contenedorNota img{
-        width: 320px !important;
+        width: 92% !important;
+        height: 250px;
+        margin-bottom: 10px !important;
+        margin-top: 10px !important;
       }
 
       .contenedorNota .filaDatosNota img{
-        width: auto !important;
+        width: 50px !important;
+        height: 50px !important;
+        margin-top: 0px !important;
+      }
+      .contenedorNota iframe{
+        width: 100%;
       }
       .contenedorNota .laMasLeida{
         display: none;
@@ -208,12 +221,17 @@
       }
       .navbar-brand{
         margin-left: 5px !important;
+        margin-right: 10px !important;
+      }
+      .navbar-brand img{
+        width: 120px !important;
       }
       .nombreUbicacion{
-        font-size: 16px;
+        font-size: 18px;
         padding: 0px;
         margin-top: 5px;
         float: left;
+        max-width: 160px
       }
       .navbar-toggler {
         position: absolute;

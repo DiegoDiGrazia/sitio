@@ -56,3 +56,31 @@ export const obtenerNotaDelTipo = (tipoNotas) => {
 
   return nota;
 };
+
+export const obtenerToken = async () => {
+  try {
+    const response = await axios.post("https://builder.ntcias.de/public/index.php", {}, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+    return response.data.token;
+  } catch (error) {
+    console.error('Error en login:', error);
+    throw error;
+  }
+};
+
+// Función para obtener la geolocalización
+export const obtenerGeo = async (token) => {
+  try {
+    const formData = new FormData();
+    formData.append('token', token);
+
+    const response = await axios.post("https://panel.serviciosd.com/app_obtener_geo", formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+    return response.data.item.geo;
+  } catch (error) {
+    console.error('Error en obtener geo:', error);
+    throw error;
+  }
+};

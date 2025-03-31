@@ -35,6 +35,10 @@
     color: #101828b3;
     margin-top: 20px;
 }
+.cargando{
+    background-color: #203152;
+
+}
 
 @media screen and (max-width: 767px) {
     .contenedorNota {

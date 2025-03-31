@@ -11,6 +11,7 @@ import HomeMunicipio from './HomesyNota/HomeMunicipio';
 import "./HomesyNota/mobileHome.css"
 import React from 'react'; // Asegúrate de que esté presente
 import CategoriasHome from './HomesyNota/CategoriaHome';
+import { obtenerGeo, obtenerToken } from './common/Api';
 
 function Sitio(homeCategoria) {
   const [TOKEN, setTOKEN] = useState("");
@@ -23,50 +24,9 @@ function Sitio(homeCategoria) {
 
   useEffect(() => {
     console.log("Cambiando de categoría:", categoria);
-  }, [categoria]); // Se ejecuta cada vez que cambia la categoría
+  }, [categoria]); 
  
-  useEffect(() => {
-    if (!tokenLoaded) {
-        axios.post("https://builder.ntcias.de/public/index.php", {}, {
-            headers: { 'Content-Type': 'multipart/form-data' }
-        })
-        .then((response) => {
-            if (response) {
-                console.log(response);
-                setTOKEN(response.data.token);
-                setTokenLoaded(true); // Marca el token como cargado
-            } else {
-                console.error('Error en login:', response.data.message);
-            }
-        })
-        .catch((error) => {
-            console.error('Error en login:', error);
-        });
-    } else {
-        // Crear el FormData para enviar el token
-        const formData = new FormData();
-        formData.append('token', TOKEN);
 
-        axios.post("https://panel.serviciosd.com/app_obtener_geo", formData, { 
-            headers: { 'Content-Type': 'multipart/form-data' },
-        })
-        .then((response) => {
-            if (response) {
-                setProvinciasDeUnPais(response.data.item.geo.paises.filter(pais => pais.nombre === "Argentina"))
-                console.log(response.data.item.geo.paises.filter(pais => pais.nombre === "Argentina"))
-                dispatch(setDatoGeo(response.data.item.geo))
-                dispatch(setDatoPais(response.data.item.geo.paises.filter(pais => pais.nombre === "Argentina")[0]))
-
-
-            } else {
-                console.error('Error en obtener geo:', response.data.message);
-            }
-        })
-        .catch((error) => {
-            console.error('Error en obtener geo:', error);
-        });
-    }
-}, [TOKEN, tokenLoaded]);
 
 
 

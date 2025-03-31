@@ -36,7 +36,7 @@ function HomePais({ pais }) {
         const formData2 = new FormData();
         formData2.append('token', 1);
         formData2.append("pais", pais);
-        formData2.append("ALL", pais);
+        formData2.append("provincia", "ALL");
         const fetch2 = fetchNotas(formData2, setNotasProvincia, dispatch);
   
         const formData3 = new FormData();
@@ -108,13 +108,11 @@ function HomePais({ pais }) {
         }}
     >
   <div className="col-auto p-0">
-    <ModuloPortadaConCarrusel notasCarrusel={notasPais} notasDebajoCarrusel1Fila={suProvincia} notasDerechaCarrusel= {notasPais.slice(2)}/>
+    <ModuloPortadaConCarrusel notasCarrusel={notasPais} notasDebajoCarrusel1Fila={notasProvincia} notasDerechaCarrusel= {notasPais.slice(2)}/>
     <ModuloUltimasNoticiasConDestacadaDeLaSemana notasSuProvincia = {suProvincia.slice(3)} />
     <ModuloLoMasVisto notas = {notasMunicipio}/>
     <PublicidadHorizontal />
     <ModuloUltimasNoticiasConLoMasLeidoALaDerecha notas = {notasPais.slice(5)} notasScrollInfinito = {notasScrollInfinito.slice(5)}/>
-
-
   </div>
 
   <div
@@ -125,7 +123,7 @@ function HomePais({ pais }) {
         width: "300px",
         marginLeft: "40px", 
         marginTop: "20px",
-        }}
+      }}
     >
     </div>
     </div>

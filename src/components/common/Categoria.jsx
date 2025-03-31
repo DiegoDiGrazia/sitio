@@ -1,6 +1,18 @@
 
 import React from "react";
 
+function extraerCategoria(str) {
+  // Dividir la cadena por '|' y buscar la parte que contiene 'Categorías/'
+  let partes = str.split('|');
+  let categoria = partes.find(parte => parte.includes('Categorías/'));
+  
+  if (categoria) {
+      // Extraer la parte después de 'Categorías/'
+      return categoria.split('Categorías/')[1];
+  }
+  return null; // Retornar null si no se encuentra 'Categorías/'
+}
+
 function Categoria({ categoria }) {
     const estiloCategoria = {
       fontSize: "16px",
@@ -20,7 +32,7 @@ function Categoria({ categoria }) {
   
     return (
       <div style={estiloContenedor}>
-        <p style={estiloCategoria}>{categoria.split("/").pop().split(" ")[0]}</p>
+        <p style={estiloCategoria}>{extraerCategoria(categoria)}</p>
       </div>
     );
   }

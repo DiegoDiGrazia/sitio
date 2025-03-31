@@ -13,3 +13,18 @@ export function formatearFecha(fechaStr) {
     const anio = fecha.getFullYear();
     return `${dia} ${mes} ${anio}`;
 }
+
+export const escapeHTML = (str) => {
+    if (!str) return "";
+    return str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  export const replaceSpecialQuotes = (str) => {
+    if (!str) return "";
+    return str.replace(/(\s)\?(\s)/g, '$1"$2'); // Reemplaza " ? " por ' " '
+};
