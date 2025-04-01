@@ -48,7 +48,8 @@ function BannerNegroVerticalMasLeidas({notas, notasRelleno}) {
               style={{ fontFamily: 'Big Shoulders Text, sans-serif' }}
             >
                 <Link 
-                to={`/nota/${nota.id_noti}`} 
+                to={`/nota/${nota.id_noti ? nota.id_noti : nota.term_id
+                  }`} 
                 target="_blank" 
                 style={{ textDecoration: "none", color: "inherit" }}
               >
