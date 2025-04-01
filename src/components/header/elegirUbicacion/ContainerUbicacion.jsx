@@ -58,7 +58,7 @@ const ContainerUbicacion = () => {
                 {provinciasArgentinas.map((provincia, index) => (
                   <li key={index} className="link-noticia">
                     <Link 
-                      to={`/argentina/${provincia.cat_provincia.replace(/\s/g, "-")}`}
+                      to={`/argentina/${provincia.nombre.replace(/\s/g, "-")}`}
                       target="_blank" 
                       style={{ textDecoration: "none", color: "inherit" }}
                       onMouseDown={(e) => e.preventDefault()}
@@ -70,7 +70,7 @@ const ContainerUbicacion = () => {
                       municipio.cat_municipio && municipio.nombre.toLowerCase().includes(searchTerm.toLowerCase()) && (
                         <li key={index} className="link-noticia">
                           <Link 
-                            to={`/argentina/${provincia.cat_provincia.replace(/\s/g, "-")}/${municipio.cat_municipio.replace(/\s/g, "-")}`} 
+                            to={`/argentina/${provincia.nombre.replace(/\s/g, "-")}/${municipio.nombre.replace(/\s/g, "-")}`} 
                             target="_blank" 
                             style={{ textDecoration: "none", color: "inherit" }}
                             onMouseDown={(e) => e.preventDefault()}
@@ -101,7 +101,7 @@ const ContainerUbicacion = () => {
               <div className="col-10 p-0 align-items-center nombreProvincia">
                 <p>
                   <Link 
-                    to={`/Argentina/${provincia.cat_provincia}`.replace(/\s/g, "-")}
+                    to={`/Argentina/${provincia.nombre}`.replace(/\s/g, "-")}
                     target="_blank" 
                     style={{ textDecoration: "none", color: "inherit" }}
                   >

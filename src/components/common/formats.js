@@ -24,7 +24,25 @@ export const escapeHTML = (str) => {
       .replace(/'/g, "&#039;");
   }
 
-  export const replaceSpecialQuotes = (str) => {
-    if (!str) return "";
-    return str.replace(/(\s)\?(\s)/g, '$1"$2'); // Reemplaza " ? " por ' " '
+    export const replaceSpecialQuotes = (str) => {
+        if (!str) return "";
+            return str.replace(/(\s)\?(\s)/g, '$1"$2'); // Reemplaza " ? " por ' " '
 };
+
+export const jsonParseCopetes = (copetes) => {
+    if (!copetes) return ""; // Maneja valores nulos o indefinidos
+
+    try {
+        // Intenta procesar el texto como JSON
+        const escapedCopetes = copetes.replace(/"/g, '\\"');
+        return `${JSON.parse( '"'+ escapedCopetes + '"')}`;
+    } catch (error) {
+        console.error("Error al procesar el copete:", error);
+        // Devuelve el texto original si ocurre un error
+        return copetes;
+    }
+};
+
+export const decodearContenidoNota = (contenido) => {
+    return decodeURIComponent(escape(atob(contenido)))
+}

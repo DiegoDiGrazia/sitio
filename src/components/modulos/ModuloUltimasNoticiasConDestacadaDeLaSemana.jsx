@@ -5,18 +5,31 @@ import BotonVerMas from '../common/BotonVerMas';
 
 import NotaMiniGenerica from '../notasMini/notaMiniGenerica';
 import DestacadaDeLaSemanaMini from '../notasMini/DestacadaDeLaSemanaMini';
+import { generarURLDeUnaNota } from "../header/Navbar";
+import { useSelector } from "react-redux";
 function ModuloUltimasNoticiasConDestacadaDeLaSemana( {notasSuProvincia}) {
     if(notasSuProvincia.length === 0){
         return(
             <div></div>
         )
     }
+
+  const datoPais = useSelector((state) => state.datosHome.datoPais);
+
   return (
     <>
         <div className='row moduloPortada mt-4' style={{backgroundColor: "#ffffff", width: "1205px" }}>
             <div className='row' style={{paddingTop: "0px"}}>
                 <div className='col-10' style={{marginRight: "32px"}}>
-                    <p className = "ultimasNoticias"style={{fontSize: "36px", color: "black", fontWeight: "bold" }}>Últimas noticias en  <span style={{color: "orange"}}>{notasSuProvincia[0].cliente}</span></p>
+                <p className="ultimasNoticias" style={{ fontSize: "36px", color: "black", fontWeight: "bold" }}>
+                    {"Últimas noticias en "}
+                    <a 
+                        href={`${generarURLDeUnaNota(notasSuProvincia[0], datoPais)}`} 
+                        style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                        <span style={{ color: "orange" }}>{notasSuProvincia[0].cliente}</span>
+                    </a>
+                    </p>               
                 </div>
                 {/* <div className='col' style={{paddingTop: "10px", marginLeft: "42px"}}>
 

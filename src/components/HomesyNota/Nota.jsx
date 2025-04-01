@@ -7,11 +7,9 @@ import Header from '../header/Header.jsx';
 import { useParams } from 'react-router-dom';
 import "./nota.css"
 import BannerNegroVerticalMasLeidas from '../notasMini/BannerNegroVerticalMasLeidas.jsx';
-import { formatearFecha } from '../common/formats.js';
+import { decodearContenidoNota, formatearFecha, jsonParseCopetes } from '../common/formats.js';
 import React from 'react';
 import FirmaNotas from '../common/firmaNotas.jsx';
-import { escapeHTML } from '../common/formats.js';
-import { replaceSpecialQuotes } from '../common/formats.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDatoNota } from '../../redux/datosHome.js'
 import he from 'he';
@@ -97,8 +95,52 @@ function Nota({ pais }) {
     }
 }, [TOKEN, tokenLoaded, nota]);
 
-  if(!nota){
-    return <div className='Cargando'></div>
+  if(Object.keys(nota).length === 0){
+    return (
+      <>
+        <PublicidadHorizontal />
+        <Header cliente={nota?.cliente} />
+
+        <div className="row g-0 contenedorNota">
+          <div className="col-auto ">
+            <div className="row justify-content-center mt-4">
+              <div className="col-12 col-md-6">
+                <div className="card" aria-hidden="true">
+                <p className="card-text placeholder-glow">
+                      <span className="placeholder col-7"></span>
+                      <span className="placeholder col-4"></span>
+                      <span className="placeholder col-4"></span>
+                      <span className="placeholder col-6"></span>
+                      <span className="placeholder col-8"></span>
+
+                    </p>
+                  <img
+                    src="/images/gitftND.gif" // Imagen de carga genérica
+                    className="card-img-top"
+                    alt="Cargando..."
+                    style={{width: "100%", backgroundColor: "gray"}}
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title placeholder-glow">
+                      <span className="placeholder col-6"></span>
+                    </h5>
+                    <p className="card-text placeholder-glow">
+                      <span className="placeholder col-7"></span>
+                      <span className="placeholder col-4"></span>
+                      <span className="placeholder col-4"></span>
+                      <span className="placeholder col-6"></span>
+                      <span className="placeholder col-8"></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </>
+    );
+  
   }
 
   const fixQuotes = (html) => {
@@ -120,10 +162,10 @@ function Nota({ pais }) {
         <div className='row justify-content-center mt-4'>
           <div className='col-12 col-md-6'> 
           <h1 className='tituloNota'>{nota?.titulo ? he.decode(nota.titulo) : "Título no disponible"}</h1>
-          <h2 className='copete'>{nota.copete} </h2>
+          <h2 className='copete'>{jsonParseCopetes(nota.copete)} </h2>
           <img src={nota.imagen}></img>
 
-          <div className='contenidoNotaDanger' dangerouslySetInnerHTML={{ __html: fixQuotes(nota.content) }} />
+          <div className='contenidoNotaDanger' dangerouslySetInnerHTML={{ __html: decodearContenidoNota(nota.content) }} />
 
           {/* SECTOR AUTOR */}
           <FirmaNotas border = {false} nombreCLiente = {nota.cliente} f_pub = {formatearFecha(nota.f_pub)} />

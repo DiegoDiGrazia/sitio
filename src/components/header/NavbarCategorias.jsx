@@ -17,16 +17,16 @@ function NavbarCategorias() {
                   <Link className="nav-link" to="/categoria/politica">Política</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/categoria/sociedad-y-seguridad">Sociedad y Seguridad</Link>
+                  <Link className="nav-link" to="/categoria/sociedad-y-seguridad">Sociedad</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/categoria/salud-y-ciencia">Salud y Ciencia</Link>
+                  <Link className="nav-link" to="/categoria/salud-y-ciencia">Salud</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/categoria/cultura-y-educacion">Cultura y educacion</Link>
+                  <Link className="nav-link" to="/categoria/cultura-y-educacion">Cultura</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/categoria/economia-y-negocios">Economia y negocios</Link>
+                  <Link className="nav-link" to="/categoria/economia-y-negocios">Economia</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/categoria/campo">Campo</Link>
@@ -34,6 +34,13 @@ function NavbarCategorias() {
                 <li className="nav-item">
                   <Link className="nav-link" to="/categoria/tendencias">Tendencias</Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/categoria/espectaculos">Espectáculos</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/categoria/internacionales">Internacionales</Link>
+                </li>
+                
                 
             </ul>
             </div>
